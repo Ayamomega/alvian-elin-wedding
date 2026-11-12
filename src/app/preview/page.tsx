@@ -93,6 +93,7 @@ useEffect(() => {
 }, []);
 
   
+
 // SECTION 1 — LUXURY COVER ENTRANCE ANIMATION
 useEffect(() => {
   const cover = document.querySelector(".opening-content");
@@ -107,57 +108,28 @@ useEffect(() => {
       filter: "blur(6px)",
     });
 
-    const playEntrance = () => {
-      const greeting = cover.querySelector(
-        ".opening-guest-greeting"
-      );
-
-      if (greeting && !elements.includes(greeting)) {
-        elements.splice(
-          elements.indexOf(greeting),
-          0,
-          greeting
-        );
+    gsap.fromTo(
+      elements,
+      {
+        opacity: 0,
+        y: 35,
+        filter: "blur(6px)",
+      },
+      {
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
+        duration: 1.4,
+        stagger: 0.18,
+        ease: "power3.out",
+        delay: 0.3,
       }
-
-      gsap.fromTo(
-        elements,
-        {
-          opacity: 0,
-          y: 35,
-          filter: "blur(6px)",
-        },
-        {
-          opacity: 1,
-          y: 0,
-          filter: "blur(0px)",
-          duration: 1.4,
-          stagger: 0.18,
-          ease: "power3.out",
-          delay: 0.3,
-        }
-      );
-    };
-
-    if (invitedGuest?.guest_name) {
-      playEntrance();
-    } else {
-      const observer = new MutationObserver(() => {
-        if (cover.querySelector(".opening-guest-greeting")) {
-          observer.disconnect();
-          playEntrance();
-        }
-      });
-
-      observer.observe(cover, {
-        childList: true,
-        subtree: true,
-      });
-    }
+    );
   }, cover);
 
   return () => ctx.revert();
-}, [invitedGuest?.guest_name]);
+}, []);
+
 
 useEffect(() => {
   const previousBodyOverflow = document.body.style.overflow;

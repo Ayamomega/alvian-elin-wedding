@@ -35,7 +35,9 @@ useEffect(() => {
   if (!section || !heading || !form) return;
 
   const listHeading = section.querySelector(".guestbook-list-heading");
-  const cards = section.querySelectorAll(".guestbook-card");
+const cards = Array.from(
+  section.querySelectorAll(".guestbook-card")
+);
 
   gsap.set([heading, form, listHeading], {
     opacity: 0,
