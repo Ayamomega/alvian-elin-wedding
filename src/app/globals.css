@@ -1,21 +1,5774 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+  @tailwind base;
+
+  @tailwind components;
+
+  @tailwind utilities;
+
+
+
+  /* =========================================
+
+    ALVIYAN & CHERLINE â€” GLOBAL DESIGN SYSTEM
+
+    ========================================= */
+
+
+
+  :root {
+
+    --navy: #101D32;
+
+    --ivory: #F5F0E8;
+
+    --champagne: #D8BD8A;
+
+
+
+    --navy-deep: #0B1525;
+
+    --ivory-light: #FBF9F4;
+
+    --ivory-dark: #E9E1D5;
+
+    --champagne-light: #E8D7B5;
+
+
+
+    --text-main: #3A2A1F;
+
+    --text-muted: #817565;
+
+    --sage: #7D896B;
+
+
+
+    --background: var(--ivory);
+
+    --foreground: var(--text-main);
+
+
+
+    --font-script: var(--font-pinyon), cursive;
+
+    --font-editorial: var(--font-cormorant), Georgia, serif;
+
+  }
+
+
+
+  * {
+
+    box-sizing: border-box;
+
+  }
+
+
+
+  html {
+
+    scroll-behavior: smooth;
+
+    background: var(--ivory);
+
+    scroll-padding-top: 20px;
+
+  }
+
+
+
+  body {
+
+    margin: 0;
+
+    padding: 0;
+
+    min-height: 100%;
+
+    color: var(--text-main);
+
+    background: var(--ivory);
+
+    font-family: var(--font-editorial);
+
+    font-size: 16px;
+
+    -webkit-font-smoothing: antialiased;
+
+    -moz-osx-font-smoothing: grayscale;
+
+  }
+
+
+
+  button,
+
+  input,
+
+  textarea,
+
+  select {
+
+    font: inherit;
+
+  }
+
+
+
+  button {
+
+    -webkit-tap-highlight-color: transparent;
+
+  }
+
+
+
+  img,
+
+  video {
+
+    display: block;
+
+    max-width: 100%;
+
+  }
+
+
+
+  ::selection {
+
+    background: var(--champagne);
+
+    color: var(--navy);
+
+  }
+
+
+
+  /* =========================================
+
+    TYPOGRAPHY
+
+    ========================================= */
+
+
+
+  .font-editorial {
+
+    font-family: var(--font-editorial);
+
+  }
+
+
+
+  .font-script {
+
+    font-family: var(--font-script);
+
+  }
+
+
+
+  .heading-script {
+
+    font-family: var(--font-script);
+
+    font-weight: 400;
+
+  }
+
+
+
+  .heading-editorial {
+
+    font-family: var(--font-editorial);
+
+    font-weight: 400;
+
+  }
+
+
+
+  /* =========================================
+
+    COLOR UTILITIES
+
+    ========================================= */
+
+
+
+  .text-navy {
+
+    color: var(--navy);
+
+  }
+
+
+
+  .text-champagne {
+
+    color: var(--champagne);
+
+  }
+
+
+
+  .text-ivory {
+
+    color: var(--ivory);
+
+  }
+
+
+
+  .text-muted {
+
+    color: var(--text-muted);
+
+  }
+
+
+
+  .bg-ivory {
+
+    background-color: var(--ivory);
+
+  }
+
+
+
+  .bg-navy {
+
+    background-color: var(--navy);
+
+  }
+
+
+
+  .bg-champagne {
+
+    background-color: var(--champagne);
+
+  }
+
+
+
+  /* =========================================
+
+    SHARED ANIMATIONS
+
+    ========================================= */
+
+
+
+  @keyframes softReveal {
+
+    from {
+
+      opacity: 0;
+
+      transform: translateY(18px);
+
+    }
+
+
+
+    to {
+
+      opacity: 1;
+
+      transform: translateY(0);
+
+    }
+
+  }
+
+
+
+  .animate-reveal {
+
+    animation: softReveal 1.2s ease-out both;
+
+  }
+
+
+
+  @keyframes gentleFloat {
+
+    0%, 100% {
+
+      transform: translateY(0);
+
+    }
+
+
+
+    50% {
+
+      transform: translateY(-7px);
+
+    }
+
+  }
+
+
+
+  .animate-float {
+
+    animation: gentleFloat 4s ease-in-out infinite;
+
+  }
+
+
+
+  @keyframes softFade {
+
+    from {
+
+      opacity: 0;
+
+    }
+
+
+
+    to {
+
+      opacity: 1;
+
+    }
+
+  }
+
+
+
+  .animate-soft-fade {
+
+    animation: softFade 1.4s ease both;
+
+  }
+
+
+
+  /* =========================================
+
+    NATURE VIDEO BACKGROUND
+
+    ========================================= */
+
+
+
+  .nature-background {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+  }
+
+
+
+  .nature-background video,
+
+  .nature-background img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+  }
+
+
+
+  .nature-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background: rgba(16, 29, 50, 0.22);
+
+    pointer-events: none;
+
+  }
+
+
+
+  /* =========================================
+
+    PAPER TEXTURES
+
+    ========================================= */
+
+
+
+  .paper-shoji {
+
+    background-color: rgba(245, 240, 232, 0.84);
+
+    backdrop-filter: blur(5px);
+
+    -webkit-backdrop-filter: blur(5px);
+
+    border: 1px solid rgba(255, 255, 255, 0.55);
+
+    box-shadow: 0 18px 50px rgba(16, 29, 50, 0.13);
+
+  }
+
+
+
+  .paper-vellum {
+
+    background-color: rgba(245, 240, 232, 0.72);
+
+    backdrop-filter: blur(9px);
+
+    -webkit-backdrop-filter: blur(9px);
+
+    border: 1px solid rgba(255, 255, 255, 0.45);
+
+  }
+
+
+
+  .paper-organic {
+
+    background: var(--ivory);
+
+    box-shadow: 0 16px 45px rgba(16, 29, 50, 0.16);
+
+  }
+
+
+
+  /* =========================================
+
+    BUTTONS
+
+    ========================================= */
+
+
+
+  .button-wedding {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    min-height: 46px;
+
+    padding: 0 25px;
+
+    border: 1px solid var(--champagne);
+
+    background: var(--navy);
+
+    color: var(--ivory);
+
+    font-family: var(--font-editorial);
+
+    font-size: 12px;
+
+    letter-spacing: 0.16em;
+
+    cursor: pointer;
+
+    transition:
+
+      background 0.35s ease,
+
+      color 0.35s ease,
+
+      transform 0.35s ease;
+
+  }
+
+
+
+  .button-wedding:hover {
+
+    background: var(--champagne);
+
+    color: var(--navy);
+
+    transform: translateY(-2px);
+
+  }
+
+
+
+  /* =========================================
+
+    ACCESSIBILITY & SCROLLBAR
+
+    ========================================= */
+
+
+
+  :focus-visible {
+
+    outline: 2px solid var(--champagne);
+
+    outline-offset: 4px;
+
+  }
+
+
+
+  ::-webkit-scrollbar {
+
+    width: 6px;
+
+  }
+
+
+
+  ::-webkit-scrollbar-track {
+
+    background: var(--ivory);
+
+  }
+
+
+
+  ::-webkit-scrollbar-thumb {
+
+    background: var(--champagne);
+
+    border-radius: 10px;
+
+  }
+
+
+
+  @media (max-width: 600px) {
+
+    body {
+
+      font-size: 15px;
+
+    }
+
+  }
+
+
+
+  @media (prefers-reduced-motion: reduce) {
+
+    *,
+
+    *::before,
+
+    *::after {
+
+      scroll-behavior: auto !important;
+
+      animation-duration: 0.01ms !important;
+
+      animation-iteration-count: 1 !important;
+
+      transition-duration: 0.01ms !important;
+
+    }
+
+  }
+
+
+
+  /* Nature Background Component */
+
+
+
+
+
+  /* Nature Background Component */
+
+
+
+  .nature-background {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+    overflow: hidden;
+
+    background: #101D32;
+
+  }
+
+
+
+  .nature-fallback,
+
+  .nature-video {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+  }
+
+
+
+  .nature-fallback {
+
+    z-index: 0;
+
+  }
+
+
+
+  .nature-fallback img,
+
+  .nature-video {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+  }
+
+
+
+  .nature-video {
+
+    z-index: 1;
+
+  }
+
+
+
+  .nature-overlay {
+
+    position: absolute;
+
+    z-index: 2;
+
+    inset: 0;
+
+    pointer-events: none;
+
+  }
+
+
+
+  .nature-background video {
+
+    pointer-events: auto;
+
+  }
+
+
+
+  @media (prefers-reduced-motion: reduce) {
+
+    .nature-video {
+
+      display: block;
+
+    }
+
+  }
+
+
+
+  /* =========================================
+
+    PAGE 3 â€” LUXURY EDITORIAL COMPOSITION
+
+  ========================================= */
+
+
+
+  .story-editorial {
+
+    background: #302821;
+
+    color: #101D32;
+
+    min-height: 100vh;
+
+  }
+
+
+
+  .story-editorial-bg {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -2;
+
+    overflow: hidden;
+
+    background: #392f29;
+
+  }
+
+
+
+  .story-editorial-bg img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+  }
+
+
+
+  .story-editorial-shade {
+
+    position: absolute;
+
+    inset: 0;
+
+    background: rgba(35, 27, 23, 0.28);
+
+  }
+
+
+
+  /* Main composition */
+
+
+
+  .story-composition {
+
+    position: relative;
+
+    width: 100%;
+
+    max-width: 880px;
+
+    min-height: 790px;
+
+    margin: 0 auto;
+
+    padding: 35px 0 50px;
+
+  }
+
+
+
+  /* Paper layers */
+
+
+
+  .story-editorial-paper {
+
+    position: relative;
+
+    width: min(76%, 590px);
+
+    margin-left: auto;
+
+    margin-right: 7%;
+
+    padding: 12px;
+
+    background: #E8DDCB;
+
+    box-shadow:
+
+      0 35px 90px rgba(0, 0, 0, 0.38),
+
+      0 5px 18px rgba(0, 0, 0, 0.2);
+
+    clip-path: polygon(
+
+      2% 1%, 98% 0%, 100% 3%, 99% 97%,
+
+      97% 100%, 2% 99%, 0% 96%, 1% 3%
+
+    );
+
+  }
+
+
+
+  .story-paper-border {
+
+    position: relative;
+
+    min-height: 730px;
+
+    padding: 48px 34px 65px;
+
+    border: 1px solid rgba(165, 133, 91, 0.55);
+
+    background-color: #F5F0E8;
+
+    background-image:
+
+      radial-gradient(rgba(107, 83, 55, 0.08) 0.55px, transparent 0.55px);
+
+    background-size: 5px 5px;
+
+    text-align: center;
+
+  }
+
+
+
+  /* Typography */
+
+
+
+  .story-editorial-monogram {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 3px;
+
+    color: #987B51;
+
+    font-family: var(--font-script);
+
+    font-size: 36px;
+
+    line-height: 1;
+
+  }
+
+
+
+  .story-editorial-monogram i {
+
+    font-size: 19px;
+
+  }
+
+
+
+  .story-editorial-eyebrow {
+
+    margin-top: 22px;
+
+    color: #9A8568;
+
+    font-family: var(--font-editorial);
+
+    font-size: 10px;
+
+    letter-spacing: 0.34em;
+
+  }
+
+
+
+  .story-editorial-title {
+
+    margin-top: 8px;
+
+    color: #101D32;
+
+    font-family: var(--font-script);
+
+    font-size: clamp(4rem, 9vw, 5.6rem);
+
+    font-weight: 400;
+
+    line-height: 1.1;
+
+  }
+
+
+
+  .story-editorial-divider {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin: 12px auto 24px;
+
+    color: #A58B61;
+
+  }
+
+
+
+  .story-editorial-divider span {
+
+    width: 52px;
+
+    height: 1px;
+
+    background: #C4A66F;
+
+  }
+
+
+
+  .story-editorial-divider i {
+
+    font-size: 15px;
+
+    font-style: normal;
+
+  }
+
+
+
+  .story-editorial-copy {
+
+    max-width: 340px;
+
+    margin: 0 auto;
+
+    color: #514538;
+
+    font-family: var(--font-editorial);
+
+    font-size: 17px;
+
+    line-height: 1.85;
+
+  }
+
+
+
+  .story-editorial-copy p + p {
+
+    margin-top: 19px;
+
+  }
+
+
+
+  .story-editorial-divider-bottom {
+
+    margin-top: 26px;
+
+    margin-bottom: 25px;
+
+  }
+
+
+
+  .story-editorial-signature p {
+
+    color: #A58B61;
+
+    font-family: var(--font-editorial);
+
+    font-size: 9px;
+
+    letter-spacing: 0.35em;
+
+  }
+
+
+
+  .story-editorial-signature h3 {
+
+    margin-top: 8px;
+
+    color: #101D32;
+
+    font-family: var(--font-script);
+
+    font-size: clamp(2rem, 5vw, 2.8rem);
+
+    font-weight: 400;
+
+  }
+
+
+
+  .story-editorial-signature span {
+
+    display: block;
+
+    margin-top: 9px;
+
+    color: #817565;
+
+    font-family: var(--font-editorial);
+
+    font-size: 10px;
+
+    letter-spacing: 0.3em;
+
+  }
+
+
+
+  /* Burgundy wax seal */
+
+
+
+  .story-editorial-wax {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 72px;
+
+    height: 72px;
+
+    margin: 27px auto 0;
+
+    border: 2px solid #5C1C2C;
+
+    border-radius: 46% 52% 48% 51%;
+
+    background:
+
+      radial-gradient(circle at 30% 25%, #9A5260, transparent 34%),
+
+      radial-gradient(circle at 60% 70%, #4D1423, #7D293C 68%, #9A4557);
+
+    box-shadow:
+
+      inset 0 0 0 3px rgba(30, 5, 12, 0.25),
+
+      0 5px 10px rgba(0, 0, 0, 0.18);
+
+    color: #E8D7C0;
+
+    font-family: var(--font-script);
+
+    font-size: 27px;
+
+    transform: rotate(-9deg);
+
+  }
+
+
+
+  /* Overlapping photo prints */
+
+
+
+  .story-editorial-photos {
+
+    position: absolute;
+
+    z-index: 5;
+
+    top: 120px;
+
+    left: -1%;
+
+    width: 40%;
+
+    height: 510px;
+
+    pointer-events: none;
+
+  }
+
+
+
+  .story-editorial-photo {
+
+    position: absolute;
+
+    width: 100%;
+
+    padding: 9px 9px 25px;
+
+    background: #F5F0E8;
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.38);
+
+  }
+
+
+
+  .story-editorial-photo img {
+
+    display: block;
+
+    width: 100%;
+
+    aspect-ratio: 3 / 4;
+
+    object-fit: cover;
+
+  }
+
+
+
+  .story-editorial-photo figcaption {
+
+    padding-top: 9px;
+
+    color: #806B50;
+
+    font-family: var(--font-script);
+
+    font-size: 19px;
+
+    text-align: center;
+
+  }
+
+
+
+  .story-editorial-photo-one {
+
+    top: 0;
+
+    left: 0;
+
+    transform: rotate(-7deg);
+
+  }
+
+
+
+  .story-editorial-photo-two {
+
+    top: 245px;
+
+    left: 18%;
+
+    transform: rotate(5deg);
+
+  }
+
+
+
+  /* Botanical illustration */
+
+
+
+  .story-editorial-flower {
+
+    position: absolute;
+
+    z-index: 6;
+
+    top: 300px;
+
+    right: -3%;
+
+    width: 135px;
+
+    pointer-events: none;
+
+  }
+
+
+
+  .story-editorial-flower svg {
+
+    width: 100%;
+
+    height: auto;
+
+    filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.15));
+
+  }
+
+
+
+  /* Ribbon */
+
+
+
+  .story-editorial-ribbon {
+
+    position: absolute;
+
+    z-index: 7;
+
+    right: -2%;
+
+    bottom: 58px;
+
+    width: 65%;
+
+    height: 1px;
+
+    background: rgba(176, 144, 99, 0.9);
+
+    transform: rotate(-3deg);
+
+    pointer-events: none;
+
+  }
+
+
+
+  .story-editorial-footer {
+
+    margin-top: 35px;
+
+    color: #D8BD8A;
+
+    font-family: var(--font-editorial);
+
+    font-size: 10px;
+
+    letter-spacing: 0.38em;
+
+    text-align: center;
+
+  }
+
+
+
+  /* Mobile composition */
+
+
+
+  @media (max-width: 600px) {
+
+    .story-editorial {
+
+      padding: 65px 12px 55px;
+
+    }
+
+
+
+    .story-composition {
+
+      min-height: 690px;
+
+      padding-top: 100px;
+
+    }
+
+
+
+    .story-editorial-paper {
+
+      width: 88%;
+
+      margin-right: 0;
+
+      padding: 8px;
+
+    }
+
+
+
+    .story-paper-border {
+
+      min-height: 610px;
+
+      padding: 38px 18px 48px;
+
+    }
+
+
+
+    .story-editorial-eyebrow {
+
+      font-size: 8px;
+
+      letter-spacing: 0.25em;
+
+    }
+
+
+
+    .story-editorial-title {
+
+      font-size: clamp(3.4rem, 15vw, 4.5rem);
+
+    }
+
+
+
+    .story-editorial-copy {
+
+      max-width: 260px;
+
+      font-size: 14px;
+
+      line-height: 1.7;
+
+    }
+
+
+
+    .story-editorial-photos {
+
+      top: 0;
+
+      left: -1%;
+
+      width: 36%;
+
+      height: 350px;
+
+    }
+
+
+
+    .story-editorial-photo {
+
+      padding: 6px 6px 18px;
+
+    }
+
+
+
+    .story-editorial-photo figcaption {
+
+      padding-top: 5px;
+
+      font-size: 13px;
+
+    }
+
+
+
+    .story-editorial-photo-two {
+
+      top: 170px;
+
+      left: 18%;
+
+    }
+
+
+
+    .story-editorial-flower {
+
+      top: auto;
+
+      right: -1%;
+
+      bottom: 70px;
+
+      width: 80px;
+
+    }
+
+
+
+    .story-editorial-ribbon {
+
+      bottom: 42px;
+
+    }
+
+
+
+    .story-editorial-footer {
+
+      font-size: 8px;
+
+      letter-spacing: 0.22em;
+
+    }
+
+  }
+
+
+
+  /* =========================================
+
+    EDITORIAL OUR STORY â€” ALVIYAN & CHERLINE
+
+  ========================================= */
+
+
+
+  .editorial-story-card {
+
+    width: 100%;
+
+    max-width: 790px;
+
+    min-height: 790px;
+
+    background:
+
+      radial-gradient(
+
+        ellipse at 20% 15%,
+
+        rgba(255,255,255,0.72),
+
+        transparent 55%
+
+      ),
+
+      #F5F0E8;
+
+    border: 1px solid rgba(196, 166, 111, 0.65);
+
+    box-shadow:
+
+      0 25px 70px rgba(28, 20, 14, 0.24),
+
+      inset 0 0 0 7px rgba(255,255,255,0.24);
+
+    position: relative;
+
+  }
+
+
+
+  .editorial-story-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 13px;
+
+    border: 1px solid rgba(196, 166, 111, 0.48);
+
+    pointer-events: none;
+
+  }
+
+
+
+  .editorial-story-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    min-height: 790px;
+
+    padding: 55px 55px 35px 260px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+  }
+
+
+
+  .editorial-photo-stack {
+
+    position: absolute;
+
+    z-index: 4;
+
+    top: 125px;
+
+    left: -28px;
+
+    width: 235px;
+
+    height: 490px;
+
+    pointer-events: none;
+
+  }
+
+
+
+  .editorial-photo {
+
+    position: absolute;
+
+    width: 172px;
+
+    padding: 8px 8px 25px;
+
+    background: #FBF8F0;
+
+    border: 1px solid rgba(196, 166, 111, 0.35);
+
+    box-shadow: 0 12px 30px rgba(30, 23, 17, 0.25);
+
+  }
+
+
+
+  .editorial-photo img {
+
+    width: 100%;
+
+    aspect-ratio: 3 / 4;
+
+    object-fit: cover;
+
+  }
+
+
+
+  .editorial-photo-one {
+
+    top: 0;
+
+    left: 0;
+
+    transform: rotate(-6deg);
+
+  }
+
+
+
+  .editorial-photo-two {
+
+    top: 230px;
+
+    left: 48px;
+
+    transform: rotate(5deg);
+
+  }
+
+
+
+  .editorial-photo figcaption {
+
+    padding-top: 8px;
+
+    color: #806B50;
+
+    font-family: var(--font-script);
+
+    font-size: 16px;
+
+    line-height: 1.1;
+
+    text-align: center;
+
+  }
+
+
+
+  .editorial-crest {
+
+    width: 66px;
+
+    height: 66px;
+
+    border: 1px solid #B69A6B;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #80613D;
+
+    font-family: var(--font-script);
+
+    font-size: 27px;
+
+    position: relative;
+
+  }
+
+
+
+  .editorial-crest::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 5px;
+
+    border: 1px solid rgba(182, 154, 107, 0.55);
+
+    border-radius: 50%;
+
+  }
+
+
+
+  .editorial-crest-amp {
+
+    font-size: 17px;
+
+    margin: 0 1px;
+
+  }
+
+
+
+  .editorial-kicker {
+
+    margin-top: 22px;
+
+    color: #8B765A;
+
+    font-family: var(--font-editorial);
+
+    font-size: 10px;
+
+    letter-spacing: 0.34em;
+
+    text-transform: uppercase;
+
+  }
+
+
+
+  .editorial-heading-wrap {
+
+    margin-top: 10px;
+
+  }
+
+
+
+  .editorial-story-heading {
+
+    color: #5B402B;
+
+    font-family: var(--font-script);
+
+    font-size: clamp(4.5rem, 8vw, 6rem);
+
+    font-weight: 400;
+
+    line-height: 1.05;
+
+  }
+
+
+
+  .editorial-flourish {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin: 12px auto 0;
+
+    color: #B69A6B;
+
+  }
+
+
+
+  .editorial-flourish span {
+
+    width: 48px;
+
+    height: 1px;
+
+    background: #B69A6B;
+
+  }
+
+
+
+  .editorial-flourish i {
+
+    font-size: 18px;
+
+    font-style: normal;
+
+  }
+
+
+
+  .editorial-story-copy {
+
+    max-width: 390px;
+
+    margin-top: 28px;
+
+    color: #514333;
+
+    font-family: var(--font-editorial);
+
+    font-size: 18px;
+
+    line-height: 1.65;
+
+  }
+
+
+
+  .editorial-story-copy p + p {
+
+    margin-top: 18px;
+
+  }
+
+
+
+  .editorial-couple {
+
+    margin-top: 30px;
+
+  }
+
+
+
+  .editorial-small-label {
+
+    color: #9A8568;
+
+    font-family: var(--font-editorial);
+
+    font-size: 10px;
+
+    letter-spacing: 0.32em;
+
+    text-transform: uppercase;
+
+  }
+
+
+
+  .editorial-couple-names {
+
+    margin-top: 7px;
+
+    color: #5B402B;
+
+    font-family: var(--font-script);
+
+    font-size: clamp(2.4rem, 5vw, 3.3rem);
+
+    line-height: 1.1;
+
+    white-space: nowrap;
+
+  }
+
+
+
+  .editorial-wedding-date {
+
+    margin-top: 12px;
+
+    color: #806B50;
+
+    font-family: var(--font-editorial);
+
+    font-size: 11px;
+
+    letter-spacing: 0.3em;
+
+    text-transform: uppercase;
+
+  }
+
+
+
+  .editorial-wax-wrap {
+
+    display: flex;
+
+    justify-content: center;
+
+    margin-top: 18px;
+
+  }
+
+
+
+  .editorial-wax-seal {
+
+    width: 82px;
+
+    height: auto;
+
+    object-fit: contain;
+
+    filter: drop-shadow(0 5px 5px rgba(60, 40, 15, 0.22));
+
+  }
+
+
+
+  /* MOBILE LAYOUT */
+
+  @media (max-width: 600px) {
+
+    .editorial-story-card {
+
+      max-width: 420px;
+
+      min-height: auto;
+
+      margin-top: 155px;
+
+    }
+
+
+
+    .editorial-story-content {
+
+      min-height: 0;
+
+      padding: 205px 25px 35px;
+
+    }
+
+
+
+    .editorial-photo-stack {
+
+      top: -125px;
+
+      left: 50%;
+
+      width: 270px;
+
+      height: 230px;
+
+      transform: translateX(-50%);
+
+    }
+
+
+
+    .editorial-photo {
+
+      width: 125px;
+
+      padding: 5px 5px 17px;
+
+    }
+
+
+
+    .editorial-photo-one {
+
+      top: 0;
+
+      left: 10px;
+
+    }
+
+
+
+    .editorial-photo-two {
+
+      top: 30px;
+
+      left: 135px;
+
+    }
+
+
+
+    .editorial-photo figcaption {
+
+      padding-top: 5px;
+
+      font-size: 12px;
+
+    }
+
+
+
+    .editorial-crest {
+
+      width: 54px;
+
+      height: 54px;
+
+      font-size: 23px;
+
+    }
+
+
+
+    .editorial-kicker {
+
+      font-size: 9px;
+
+      letter-spacing: 0.25em;
+
+    }
+
+
+
+    .editorial-story-heading {
+
+      font-size: 4.5rem;
+
+    }
+
+
+
+    .editorial-story-copy {
+
+      font-size: 16px;
+
+      line-height: 1.6;
+
+    }
+
+
+
+    .editorial-couple-names {
+
+      font-size: clamp(2.1rem, 8vw, 2.8rem);
+
+    }
+
+
+
+    .editorial-wax-seal {
+
+      width: 70px;
+
+    }
+
+  }
+
+
+
+  /* =========================================
+
+    ALVIYAN & CHERLINE â€” EDITORIAL OUR STORY
+
+    Palette locked to Page 1 & 2
+
+  ========================================= */
+
+
+
+  .ac-story {
+
+    --ac-navy: #101D32;
+
+    --ac-ivory: #F5F0E8;
+
+    --ac-champagne: #D8BD8A;
+
+    --ac-ink: #4A4035;
+
+
+
+    position: relative;
+
+    isolation: isolate;
+
+    overflow: hidden;
+
+    padding: 90px 20px 110px;
+
+    background: var(--ac-navy);
+
+    color: var(--ac-ink);
+
+  }
+
+
+
+  .ac-story-background {
+
+    position: absolute;
+
+    z-index: -2;
+
+    inset: 0;
+
+    overflow: hidden;
+
+  }
+
+
+
+  .ac-story-background img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+  }
+
+
+
+  .ac-story-background-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background: rgba(16, 29, 50, 0.22);
+
+  }
+
+
+
+  .ac-story-stage {
+
+    position: relative;
+
+    width: min(100%, 1050px);
+
+    min-height: 1050px;
+
+    margin: 0 auto;
+
+  }
+
+
+
+  /* Layered parchment */
+
+
+
+  .ac-story-paper-back {
+
+    position: absolute;
+
+    z-index: 0;
+
+    top: 28px;
+
+    left: 22%;
+
+    width: 73%;
+
+    height: auto;
+
+    aspect-ratio: 13 / 17;
+
+    object-fit: contain;
+
+    transform: rotate(1.8deg);
+
+    filter: drop-shadow(0 22px 28px rgba(0, 0, 0, 0.24));
+
+  }
+
+
+
+  .ac-story-paper {
+
+    position: absolute;
+
+    z-index: 1;
+
+    top: 0;
+
+    left: 20%;
+
+    width: 75%;
+
+    min-height: 1000px;
+
+    filter: drop-shadow(0 25px 32px rgba(0, 0, 0, 0.28));
+
+  }
+
+
+
+  .ac-story-paper-texture {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: fill;
+
+    pointer-events: none;
+
+  }
+
+
+
+  .ac-story-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 66%;
+
+    margin-left: 28%;
+
+    padding: 75px 8% 60px 3%;
+
+    text-align: center;
+
+  }
+
+
+
+  /* Typography â€” consistent palette */
+
+
+
+  .ac-story-monogram {
+
+    color: var(--ac-champagne);
+
+    font-family: var(--font-pinyon), cursive;
+
+    font-size: 48px;
+
+    line-height: 1;
+
+    text-shadow: 0 1px 0 rgba(90, 60, 30, 0.15);
+
+  }
+
+
+
+  .ac-story-monogram span {
+
+    font-family: var(--font-editorial);
+
+    font-size: 22px;
+
+    vertical-align: 8px;
+
+  }
+
+
+
+  .ac-story-kicker {
+
+    margin-top: 18px;
+
+    color: #9A8058;
+
+    font-family: var(--font-editorial);
+
+    font-size: 11px;
+
+    letter-spacing: 0.32em;
+
+    text-transform: uppercase;
+
+  }
+
+
+
+  .ac-story-title-wrap {
+
+    margin-top: 28px;
+
+  }
+
+
+
+  .ac-story-title {
+
+    margin: 0;
+
+    color: var(--ac-navy);
+
+    font-family: var(--font-pinyon), cursive;
+
+    font-size: clamp(4rem, 7vw, 5.4rem);
+
+    font-weight: 400;
+
+    line-height: 1;
+
+  }
+
+
+
+  .ac-story-divider {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 13px;
+
+    margin: 20px auto 0;
+
+    color: #A88A5C;
+
+  }
+
+
+
+  .ac-story-divider span {
+
+    width: 54px;
+
+    height: 1px;
+
+    background: var(--ac-champagne);
+
+  }
+
+
+
+  .ac-story-divider i {
+
+    font-size: 14px;
+
+    font-style: normal;
+
+  }
+
+
+
+  .ac-story-copy {
+
+    max-width: 410px;
+
+    margin: 35px auto 0;
+
+    color: var(--ac-ink);
+
+    font-family: var(--font-editorial);
+
+    font-size: 20px;
+
+    line-height: 1.5;
+
+  }
+
+
+
+  .ac-story-copy p + p {
+
+    margin-top: 22px;
+
+  }
+
+
+
+  .ac-story-couple {
+
+    margin-top: 38px;
+
+  }
+
+
+
+  .ac-story-small-label {
+
+    color: #9A8058;
+
+    font-family: var(--font-editorial);
+
+    font-size: 10px;
+
+    letter-spacing: 0.28em;
+
+    text-transform: uppercase;
+
+  }
+
+
+
+  .ac-story-names {
+
+    margin-top: 12px;
+
+    color: var(--ac-navy);
+
+    font-family: var(--font-editorial);
+
+    font-size: 19px;
+
+    font-weight: 500;
+
+    letter-spacing: 0.2em;
+
+    text-transform: uppercase;
+
+  }
+
+
+
+  .ac-story-date {
+
+    margin-top: 13px;
+
+    color: #8C7655;
+
+    font-family: var(--font-editorial);
+
+    font-size: 12px;
+
+    letter-spacing: 0.25em;
+
+    text-transform: uppercase;
+
+  }
+
+
+
+  /* Original wax seal image */
+
+
+
+  .ac-story-wax {
+
+    display: flex;
+
+    justify-content: center;
+
+    margin-top: 32px;
+
+  }
+
+
+
+  .ac-story-wax img {
+
+    width: 92px;
+
+    height: 92px;
+
+    object-fit: contain;
+
+    filter: drop-shadow(0 5px 6px rgba(48, 25, 15, 0.22));
+
+  }
+
+
+
+  /* Overlapping vintage photographs */
+
+
+
+  .ac-story-photos {
+
+    position: absolute;
+
+    z-index: 4;
+
+    top: 115px;
+
+    left: 0;
+
+    width: 39%;
+
+    height: 650px;
+
+    pointer-events: none;
+
+  }
+
+
+
+  .ac-story-photo {
+
+    position: absolute;
+
+    width: 68%;
+
+    margin: 0;
+
+    padding: 9px 9px 28px;
+
+    background: #F5F0E8;
+
+    box-shadow:
+
+      0 12px 25px rgba(0, 0, 0, 0.25),
+
+      0 2px 5px rgba(0, 0, 0, 0.12);
+
+  }
+
+
+
+  .ac-story-photo-one {
+
+    top: 0;
+
+    left: 4%;
+
+    transform: rotate(-7deg);
+
+  }
+
+
+
+  .ac-story-photo-two {
+
+    top: 285px;
+
+    left: 24%;
+
+    transform: rotate(5deg);
+
+  }
+
+
+
+  .ac-story-photo-image {
+
+    width: 100%;
+
+    aspect-ratio: 3 / 4;
+
+    overflow: hidden;
+
+    background: #E9E1D5;
+
+  }
+
+
+
+  .ac-story-photo-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+  }
+
+
+
+  .ac-story-photo figcaption {
+
+    padding-top: 9px;
+
+    color: #756044;
+
+    font-family: var(--font-editorial);
+
+    font-size: 12px;
+
+    font-style: italic;
+
+    text-align: center;
+
+  }
+
+
+
+  /* Botanical decorations */
+
+
+
+  .ac-story-botanical {
+
+    position: absolute;
+
+    z-index: 3;
+
+    top: 400px;
+
+    right: -1%;
+
+    width: 19%;
+
+    height: auto;
+
+    opacity: 0.85;
+
+    pointer-events: none;
+
+  }
+
+
+
+  .ac-story-lily {
+
+  position: absolute;
+
+  z-index: 10;
+
+  right: -105px;
+
+  bottom: 70px;
+
+  width: 300px;
+
+  height: 450px;
+
+  object-fit: contain;
+
+  object-position: center;
+
+  pointer-events: none;
+
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+
+
+  /* Responsive reveal safety */
+
+
+
+  .ac-story .story-reveal,
+
+  .ac-story .story-photo {
+
+    will-change: opacity, transform;
+
+  }
+
+
+
+  /* Tablet */
+
+
+
+  @media (max-width: 800px) {
+
+    .ac-story {
+
+      padding: 55px 14px 75px;
+
+    }
+
+
+
+    .ac-story-stage {
+
+      min-height: 940px;
+
+    }
+
+
+
+    .ac-story-paper-back {
+
+      left: 14%;
+
+      width: 84%;
+
+      height: 900px;
+
+    }
+
+
+
+    .ac-story-paper {
+
+      left: 10%;
+
+      width: 88%;
+
+      min-height: 920px;
+
+    }
+
+
+
+    .ac-story-content {
+
+      width: 72%;
+
+      margin-left: 24%;
+
+      padding-top: 72px;
+
+      padding-right: 7%;
+
+    }
+
+
+
+    .ac-story-photos {
+
+      top: 145px;
+
+      left: -2%;
+
+      width: 37%;
+
+    }
+
+
+
+    .ac-story-photo-two {
+
+      top: 245px;
+
+      left: 20%;
+
+    }
+
+
+
+    .ac-story-copy {
+
+      font-size: 18px;
+
+    }
+
+
+
+    .ac-story-botanical {
+
+      right: -1%;
+
+      width: 18%;
+
+    }
+
+
+
+    .ac-story-lily {
+
+      width: 22%;
+
+    }
+
+  }
+
+
+
+  /* Mobile */
+
+
+
+  @media (max-width: 560px) {
+
+    .ac-story {
+
+      padding: 38px 10px 55px;
+
+    }
+
+
+
+    .ac-story-stage {
+
+      min-height: 1000px;
+
+    }
+
+
+
+    .ac-story-paper-back {
+
+      top: -15px;
+
+      left: 3%;
+
+      width: 96%;
+
+      height: 950px;
+
+      transform: rotate(1.5deg);
+
+    }
+
+
+
+    .ac-story-paper {
+
+      top: -43px;
+
+      left: 1%;
+
+      width: 98%;
+
+      min-height: 970px;
+
+    }
+
+
+
+    .ac-story-content {
+
+      width: 82%;
+
+      margin: 0 auto;
+
+      padding: 235px 5% 50px;
+
+    }
+
+
+
+    .ac-story-photos {
+
+      top: 30px;
+
+      left: 7%;
+
+      width: 78%;
+
+      height: 270px;
+
+    }
+
+
+
+    .ac-story-photo {
+
+      width: 42%;
+
+      padding: 6px 6px 20px;
+
+    }
+
+
+
+    .ac-story-photo-one {
+
+      top: 0;
+
+      left: 2%;
+
+      transform: rotate(-7deg);
+
+    }
+
+
+
+    .ac-story-photo-two {
+
+      top: 28px;
+
+      left: 47%;
+
+      transform: rotate(6deg);
+
+    }
+
+
+
+    .ac-story-photo figcaption {
+
+      padding-top: 6px;
+
+      font-size: 9px;
+
+    }
+
+
+
+    .ac-story-monogram {
+
+      font-size: 39px;
+
+    }
+
+
+
+    .ac-story-monogram span {
+
+      font-size: 18px;
+
+    }
+
+
+
+    .ac-story-kicker {
+
+      margin-top: 12px;
+
+      font-size: 9px;
+
+      letter-spacing: 0.22em;
+
+    }
+
+
+
+    .ac-story-title-wrap {
+
+      margin-top: 20px;
+
+    }
+
+
+
+    .ac-story-title {
+
+      font-size: clamp(3.6rem, 16vw, 4.5rem);
+
+    }
+
+
+
+    .ac-story-copy {
+  margin-top: 35px;
+  font-size: 17px;
+  line-height: 1.45;
+  max-width: 310px;
+}
+
+
+
+    .ac-story-copy p + p {
+
+      margin-top: 17px;
+
+    }
+
+
+
+    .ac-story-couple {
+
+      margin-top: 27px;
+
+    }
+
+
+
+    .ac-story-names {
+
+      font-size: 15px;
+
+      letter-spacing: 0.12em;
+
+    }
+
+
+
+    .ac-story-date {
+
+      font-size: 10px;
+
+      letter-spacing: 0.18em;
+
+    }
+
+
+
+    .ac-story-wax {
+
+      margin-top: 22px;
+
+    }
+
+
+
+    .ac-story-wax img {
+
+      width: 76px;
+
+      height: 76px;
+
+    }
+
+
+
+    .ac-story-botanical {
+
+      top: auto;
+
+      right: 0;
+
+      bottom: 125px;
+
+      width: 17%;
+
+    }
+
+
+
+    .ac-story-lily {
+
+      right: -2%;
+
+      bottom: 15px;
+
+      width: 25%;
+
+    }
+
+  }
+
+
+
+  @media (prefers-reduced-motion: reduce) {
+
+    .ac-story .story-reveal,
+
+    .ac-story .story-photo {
+
+      will-change: auto;
+
+    }
+
+  }
+
+
+
+  /* =========================================
+
+    PAGE 3 â€” LUXURY EDITORIAL OUR STORY
+
+    ========================================= */
+
+
+
+  .story-luxury {
+
+    --story-navy: #101D32;
+
+    --story-ivory: #F5F0E8;
+
+    --story-gold: #D8BD8A;
+
+    --story-ink: #3A2A1F;
+
+
+
+    position: relative;
+
+    isolation: isolate;
+
+    min-height: 1100px;
+
+    padding: 110px 24px 130px;
+
+    background-color: var(--story-navy);
+
+    overflow: hidden;
+
+  }
+
+
+
+  /* Real organza background image */
+
+  .story-silk-bg {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -2;
+
+    background-image:
+
+      linear-gradient(rgba(16, 29, 50, 0.12), rgba(16, 29, 50, 0.12)),
+
+      url("/images/our-story/our-story-bg.webp");
+
+    background-size: cover;
+
+    background-position: center;
+
+  }
+
+
+
+  .story-silk-fold {
+
+    display: none;
+
+  }
+
+
+
+  /* Main parchment composition */
+
+  .editorial-story-card {
+
+    position: relative;
+
+    width: min(100%, 850px);
+
+    min-height: 1000px;
+
+    margin: 0 auto;
+
+    isolation: isolate;
+
+    background-image: url("/images/our-story/02-parchment-main.svg");
+
+    background-size: 100% 100%;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    filter: drop-shadow(0 22px 30px rgba(0, 0, 0, 0.25));
+
+  }
+
+
+
+  /* Second sheet underneath */
+
+  .editorial-story-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    z-index: -1;
+
+    inset: 22px -18px -18px 18px;
+
+    background-image: url("/images/our-story/03-parchment-back.svg");
+
+    background-size: 100% 100%;
+
+    background-repeat: no-repeat;
+
+    transform: rotate(1.2deg);
+
+    filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.2));
+
+  }
+
+
+
+  /* Content sits to the right of the photo stack */
+
+  .editorial-story-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 70%;
+
+    margin-left: 27%;
+
+    padding: 72px 8% 100px 2%;
+
+    text-align: center;
+
+    color: var(--story-navy);
+
+  }
+
+
+
+  /* Overlapping vintage photographs */
+
+  .editorial-photo-stack {
+
+    position: absolute;
+
+    z-index: 5;
+
+    left: -105px;
+
+    top: 155px;
+
+    width: 265px;
+
+    height: 650px;
+
+    pointer-events: none;
+
+  }
+
+
+
+  .editorial-photo {
+
+    position: absolute;
+
+    width: 205px;
+
+    margin: 0;
+
+    padding: 9px 9px 30px;
+
+    background: #F5F0E8;
+
+    border: 1px solid rgba(216, 189, 138, 0.65);
+
+    box-shadow:
+
+      0 12px 24px rgba(0, 0, 0, 0.24),
+
+      0 2px 5px rgba(0, 0, 0, 0.12);
+
+  }
+
+
+
+  .editorial-photo img {
+
+    display: block;
+
+    width: 100%;
+
+    aspect-ratio: 3 / 4;
+
+    object-fit: cover;
+
+    object-position: center;
+
+  }
+
+
+
+  .editorial-photo figcaption {
+
+    padding-top: 9px;
+
+    color: #756044;
+
+    font-family: var(--font-eb-garamond), Georgia, serif;
+
+    font-size: 13px;
+
+    font-style: italic;
+
+    text-align: center;
+
+  }
+
+
+
+  .editorial-photo-one {
+
+    top: 0;
+
+    left: 0;
+
+    transform: rotate(-7deg);
+
+  }
+
+
+
+  .editorial-photo-two {
+
+    top: 285px;
+
+    left: 48px;
+
+    transform: rotate(5deg);
+
+  }
+
+
+
+  /* Gold A&C crest */
+
+  .editorial-crest {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    color: #A9874E;
+
+    font-family: var(--font-great-vibes), cursive;
+
+    font-size: 42px;
+
+    line-height: 1;
+
+  }
+
+
+
+  .editorial-crest-amp {
+
+    font-size: 27px;
+
+  }
+
+
+
+  /* Editorial typography */
+
+  .editorial-kicker {
+
+    margin-top: 16px;
+
+    color: #92784F;
+
+    font-family: var(--font-cinzel), Georgia, serif;
+
+    font-size: 10px;
+
+    letter-spacing: 0.28em;
+
+    text-transform: uppercase;
+
+  }
+
+
+
+  .editorial-heading-wrap {
+
+    margin-top: 24px;
+
+  }
+
+
+
+  .editorial-story-heading {
+
+    color: var(--story-navy);
+
+    font-family: var(--font-great-vibes), cursive;
+
+    font-size: clamp(56px, 7vw, 76px);
+
+    font-weight: 400;
+
+    line-height: 1.12;
+
+  }
+
+
+
+  .editorial-flourish {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin: 20px auto 0;
+
+    color: #B18B50;
+
+  }
+
+
+
+  .editorial-flourish span {
+
+    width: 48px;
+
+    height: 1px;
+
+    background: var(--story-gold);
+
+  }
+
+
+
+  .editorial-flourish i {
+
+    font-size: 17px;
+
+    font-style: normal;
+
+  }
+
+
+
+  .editorial-story-copy {
+
+    max-width: 420px;
+
+    margin: 35px auto 0;
+
+    color: var(--story-ink);
+
+    font-family: var(--font-eb-garamond), Georgia, serif;
+
+    font-size: 19px;
+
+    line-height: 1.5;
+
+  }
+
+
+
+  .editorial-story-copy p + p {
+
+    margin-top: 22px;
+
+  }
+
+
+
+  /* Couple details */
+
+  .editorial-couple {
+
+    margin-top: 42px;
+
+  }
+
+
+
+  .editorial-small-label {
+
+    color: #A58B61;
+
+    font-family: var(--font-cinzel), Georgia, serif;
+
+    font-size: 9px;
+
+    letter-spacing: 0.28em;
+
+    text-transform: uppercase;
+
+  }
+
+
+
+  .editorial-couple-names {
+
+    margin-top: 10px;
+
+    color: var(--story-navy);
+
+    font-family: var(--font-cinzel), Georgia, serif;
+
+    font-size: clamp(15px, 2vw, 19px);
+
+    font-weight: 500;
+
+    letter-spacing: 0.17em;
+
+  }
+
+
+
+  .editorial-wedding-date {
+
+    margin-top: 12px;
+
+    color: #92784F;
+
+    font-family: var(--font-cinzel), Georgia, serif;
+
+    font-size: 11px;
+
+    letter-spacing: 0.22em;
+
+  }
+
+
+
+  /* Original gold wax seal image */
+
+  .editorial-wax-wrap {
+
+    display: flex;
+
+    justify-content: center;
+
+    margin-top: 38px;
+
+  }
+
+
+
+  .editorial-wax-seal {
+
+    display: block;
+
+    width: 112px;
+
+    height: 112px;
+
+    object-fit: contain;
+
+    filter: drop-shadow(0 7px 8px rgba(70, 43, 17, 0.28));
+
+  }
+
+
+
+  /* Real calla lily image on the right */
+
+  .story-luxury::after {
+
+    content: "";
+
+    position: absolute;
+
+    z-index: 4;
+
+    top: 18%;
+
+    right: max(12px, calc((100vw - 1120px) / 2));
+
+    width: clamp(130px, 19vw, 235px);
+
+    height: 650px;
+
+    background-image: url("/images/our-story/calla-lilies.png");
+
+    background-repeat: no-repeat;
+
+    background-position: center;
+
+    background-size: contain;
+
+    pointer-events: none;
+
+  }
+
+
+
+  /* Reveal animation initial state */
+
+  .story-reveal,
+
+  .story-photo {
+
+    will-change: transform, opacity;
+
+  }
+
+
+
+  /* =========================================
+
+    MOBILE LAYOUT
+
+    ========================================= */
+
+
+
+  @media (max-width: 700px) {
+
+    .story-luxury {
+
+      min-height: auto;
+
+      padding: 75px 18px 95px;
+
+    }
+
+
+
+    .editorial-story-card {
+
+      width: 100%;
+
+      min-height: 920px;
+
+      background-size: 100% 100%;
+
+    }
+
+
+
+    .editorial-story-card::before {
+
+      inset: 14px -8px -12px 8px;
+
+    }
+
+
+
+    .editorial-story-content {
+
+      width: 100%;
+
+      margin-left: 0;
+
+      padding: 55px 11% 75px;
+
+    }
+
+
+
+    .editorial-crest {
+
+      font-size: 35px;
+
+    }
+
+
+
+    .editorial-kicker {
+
+      font-size: 9px;
+
+      letter-spacing: 0.2em;
+
+    }
+
+
+
+    .editorial-story-heading {
+
+      font-size: clamp(48px, 13vw, 64px);
+
+    }
+
+
+
+    .editorial-story-copy {
+
+      max-width: 340px;
+
+      font-size: 17px;
+
+      line-height: 1.45;
+
+    }
+
+
+
+    .editorial-couple-names {
+
+      font-size: 14px;
+
+      letter-spacing: 0.12em;
+
+    }
+
+
+
+    .editorial-wax-seal {
+
+      width: 92px;
+
+      height: 92px;
+
+    }
+
+
+
+    /* Photos become smaller and sit below the paper */
+
+    .editorial-photo-stack {
+
+      position: relative;
+
+      top: auto;
+
+      left: auto;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: flex-start;
+
+      width: 100%;
+
+      height: 205px;
+
+      margin: 15px auto 5px;
+
+    }
+
+
+
+    .editorial-photo {
+
+      width: 132px;
+
+      padding: 6px 6px 20px;
+
+    }
+
+
+
+    .editorial-photo img {
+
+      aspect-ratio: 4 / 5;
+
+    }
+
+
+
+    .editorial-photo figcaption {
+
+      padding-top: 5px;
+
+      font-size: 10px;
+
+    }
+
+
+
+    .editorial-photo-one {
+
+      top: 5px;
+
+      left: calc(50% - 135px);
+
+      transform: rotate(-7deg);
+
+    }
+
+
+
+    .editorial-photo-two {
+
+      top: 28px;
+
+      left: calc(50% - 5px);
+
+      transform: rotate(6deg);
+
+    }
+
+
+
+    .story-luxury::after {
+
+      top: auto;
+
+      right: -15px;
+
+      bottom: 10px;
+
+      width: 105px;
+
+      height: 330px;
+
+      opacity: 0.9;
+
+    }
+
+  }
+
+
+
+  @media (prefers-reduced-motion: reduce) {
+
+    .story-reveal,
+
+    .story-photo {
+
+      will-change: auto;
+
+    }
+
+  }
+
+
+
+  /* =========================================
+
+    PAGE 3 â€” ALVIYAN & CHERLINE
+
+    FINAL EDITORIAL LAYOUT OVERRIDES
+
+    ========================================= */
+
+
+
+  .ac-story {
+
+    --ac-navy: #101D32;
+
+    --ac-ivory: #F5F0E8;
+
+    --ac-champagne: #D8BD8A;
+
+    --ac-ink: #4A4035;
+
+
+
+    position: relative;
+
+    isolation: isolate;
+
+    overflow: hidden;
+
+    padding: 90px 24px 110px;
+
+    background: var(--ac-navy);
+
+    color: var(--ac-ink);
+
+  }
+
+
+
+
+
+  .ac-story-background {
+
+    position: absolute;
+
+    z-index: 0;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+  }
+
+
+
+  .ac-story-background img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 55%;
+}
+
+.ac-story-background-overlay {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background:
+    linear-gradient(
+      rgba(25, 38, 25, 0.32),
+      rgba(25, 38, 25, 0.42)
+    );
+}
+
+
+
+
+
+  /* Main composition */
+
+
+
+  /* MAIN COMPOSITION â€” DESKTOP */
+
+  .ac-story-stage {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: min(100%, 1050px);
+
+    min-height: 1050px;
+
+    margin: 0 auto;
+
+  }
+
+
+
+  /* Layered parchment */
+
+
+
+  .ac-story-paper-back {
+
+    position: absolute;
+
+    z-index: 0;
+
+    top: 25px;
+
+    left: 21%;
+
+    width: 71%;
+
+    height: auto;
+
+    aspect-ratio: 13 / 17;
+
+    object-fit: contain;
+
+    transform: rotate(1.5deg);
+
+    filter: drop-shadow(0 22px 28px rgba(0, 0, 0, 0.24));
+
+  }
+
+
+
+
+
+
+
+  .ac-story-paper {
+
+    position: absolute;
+
+    z-index: 1;
+
+    top: 0;
+
+    left: 18%;
+
+    width: 74%;
+
+    height: auto;
+
+    min-height: 0;
+
+    aspect-ratio: 13 / 17;
+
+    filter: drop-shadow(0 25px 32px rgba(0, 0, 0, 0.28));
+
+  }
+
+
+
+
+
+  .ac-story-paper-texture {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+    pointer-events: none;
+
+  }
+
+
+
+  .ac-story-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 72%;
+
+    margin-left: 22%;
+
+    padding: 48px 8% 35px 3%;
+
+    text-align: center;
+
+  }
+
+
+
+  /* Monogram and typography */
+
+  .ac-story-monogram {
+
+    color: #A9874E;
+
+    font-family: var(--font-great-vibes), cursive;
+
+    font-size: 48px;
+
+    line-height: 1;
+
+  }
+
+
+
+  .ac-story-monogram span {
+
+    font-size: 0.72em;
+
+  }
+
+
+
+  .ac-story-kicker {
+
+    margin-top: 15px;
+
+    color: #92784F;
+
+    font-family: var(--font-cinzel), serif;
+
+    font-size: 10px;
+
+    letter-spacing: 0.25em;
+
+    text-transform: uppercase;
+
+  }
+
+
+
+  .ac-story-title-wrap {
+
+    margin-top: 20px;
+
+  }
+
+
+
+  .ac-story-title {
+
+    color: var(--ac-navy);
+
+    font-family: var(--font-great-vibes), cursive;
+
+    font-size: clamp(58px, 7vw, 76px);
+
+    font-weight: 400;
+
+    line-height: 1.1;
+
+  }
+
+
+
+  .ac-story-divider {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 15px;
+
+    color: #A9874E;
+
+  }
+
+
+
+  .ac-story-divider span {
+
+    width: 48px;
+
+    height: 1px;
+
+    background: var(--ac-champagne);
+
+  }
+
+
+
+  .ac-story-divider i {
+
+    font-style: normal;
+
+    font-size: 16px;
+
+  }
+
+
+
+  .ac-story-copy {
+
+    max-width: 420px;
+
+    margin: 30px auto 0;
+
+    color: var(--ac-ink);
+
+    font-family: var(--font-eb-garamond), Georgia, serif;
+
+    font-size: 20px;
+
+    line-height: 1.45;
+
+  }
+
+
+
+  .ac-story-copy p + p {
+
+    margin-top: 20px;
+
+  }
+
+
+
+  .ac-story-couple {
+
+    margin-top: 35px;
+
+  }
+
+
+
+  .ac-story-small-label {
+
+    color: #92784F;
+
+    font-family: var(--font-cinzel), serif;
+
+    font-size: 9px;
+
+    letter-spacing: 0.24em;
+
+    text-transform: uppercase;
+
+  }
+
+
+
+  .ac-story-names {
+
+    margin-top: 10px;
+
+    color: var(--ac-navy);
+
+    font-family: var(--font-cinzel), serif;
+
+    font-size: 19px;
+
+    font-weight: 500;
+
+    letter-spacing: 0.14em;
+
+    text-transform: uppercase;
+
+  }
+
+
+
+  .ac-story-date {
+
+    margin-top: 12px;
+
+    color: #92784F;
+
+    font-family: var(--font-cinzel), serif;
+
+    font-size: 12px;
+
+    letter-spacing: 0.2em;
+
+    text-transform: uppercase;
+
+  }
+
+
+
+  /* Larger original wax seal */
+
+
+
+  .ac-story-wax {
+
+    display: flex;
+
+    justify-content: center;
+
+    margin-top: 18px;
+
+  }
+
+
+
+  .ac-story-wax img {
+
+    display: block;
+
+    width: 175px;
+
+    height: 175px;
+
+    object-fit: contain;
+
+    filter: drop-shadow(0 8px 10px rgba(65, 40, 20, 0.28));
+
+  }
+
+
+
+
+
+  /* Photo stack â€” kept outside the text column */
+
+
+
+  /* PHOTO STACK â€” VINTAGE EDITORIAL */
+
+  .ac-story-photos {
+
+    position: absolute;
+
+    z-index: 5;
+
+    top: 165px;
+
+    left: 1%;
+
+    width: 300px;
+
+    height: 540px;
+
+    pointer-events: none;
+
+  }
+
+
+
+  .ac-story-photo {
+
+    position: absolute;
+
+    width: 185px;
+
+    margin: 0;
+
+    padding: 8px 8px 27px;
+
+    background: #F5F0E8;
+
+    border: 1px solid rgba(216, 189, 138, 0.75);
+
+    box-shadow:
+
+      0 14px 25px rgba(0, 0, 0, 0.24),
+
+      0 2px 5px rgba(0, 0, 0, 0.12);
+
+  }
+
+
+
+  .ac-story-photo-image {
+
+    overflow: hidden;
+
+    background: #E9E1D5;
+
+  }
+
+
+
+  .ac-story-photo-image img {
+
+    display: block;
+
+    width: 100%;
+
+    aspect-ratio: 4 / 5;
+
+    object-fit: cover;
+
+  }
+
+
+
+  .ac-story-photo figcaption {
+
+    padding-top: 8px;
+
+    color: #756044;
+
+    font-family: var(--font-eb-garamond), Georgia, serif;
+
+    font-size: 12px;
+
+    font-style: italic;
+
+    text-align: center;
+
+  }
+
+
+
+  .ac-story-photo-one {
+
+    top: 0;
+
+    left: 0;
+
+    transform: rotate(-5deg);
+
+  }
+
+
+
+  .ac-story-photo-two {
+
+    top: 245px;
+
+    left: 65px;
+
+    transform: rotate(5deg);
+
+  }
+
+
+
+  /* Botanical decoration */
+
+  .ac-story-botanical {
+
+    position: absolute;
+
+    z-index: 3;
+
+    top: 90px;
+
+    right: -5px;
+
+    width: 125px;
+
+    height: 300px;
+
+    object-fit: contain;
+
+    pointer-events: none;
+
+  }
+
+
+
+
+
+  .ac-story-lily {
+
+    position: absolute;
+
+    z-index: 4;
+
+    right: 5px;
+
+    bottom: 105px;
+
+    width: 190px;
+
+    height: 390px;
+
+    object-fit: contain;
+
+    object-position: bottom right;
+
+    pointer-events: none;
+
+  }
+
+
+
+
+
+  /* Mobile composition */
+
+  @media (max-width: 700px) {
+
+    .ac-story {
+
+      padding: 55px 14px 75px;
+
+    }
+
+
+
+    .ac-story-stage {
+
+      min-height: 1200px;
+
+    }
+
+
+
+    .ac-story-paper-back {
+
+      top: 180px;
+
+      left: 1%;
+
+      width: 98%;
+
+      height: 980px;
+
+    }
+
+
+
+    .ac-story-paper {
+
+      top: 170px;
+
+      left: 0;
+
+      width: 100%;
+
+      height: 1000px;
+
+    }
+
+
+
+    .ac-story-content {
+
+      width: 100%;
+
+      margin-left: 0;
+
+      padding: 65px 10% 55px;
+
+    }
+
+
+
+    .ac-story-photos {
+
+      top: 0;
+
+      left: 50%;
+
+      width: 290px;
+
+      height: 190px;
+
+      transform: translateX(-50%);
+
+    }
+
+
+
+    .ac-story-photo {
+
+      width: 132px;
+
+      padding: 6px 6px 20px;
+
+    }
+
+
+
+    .ac-story-photo-image img {
+
+      aspect-ratio: 4 / 5;
+
+    }
+
+
+
+    .ac-story-photo figcaption {
+
+      padding-top: 5px;
+
+      font-size: 10px;
+
+    }
+
+
+
+    .ac-story-photo-one {
+
+      top: 0;
+
+      left: 10px;
+
+      transform: rotate(-6deg);
+
+    }
+
+
+
+    .ac-story-photo-two {
+
+      top: 25px;
+
+      left: 145px;
+
+      transform: rotate(5deg);
+
+    }
+
+
+
+    .ac-story-monogram {
+
+      font-size: 40px;
+
+    }
+
+
+
+    .ac-story-kicker {
+
+      font-size: 9px;
+
+      letter-spacing: 0.18em;
+
+    }
+
+
+
+    .ac-story-title {
+
+      font-size: clamp(54px, 14vw, 68px);
+
+    }
+
+
+
+    .ac-story-copy {
+
+      font-size: 17px;
+
+      line-height: 1.45;
+
+    }
+
+
+
+    .ac-story-names {
+
+      font-size: 14px;
+
+      letter-spacing: 0.1em;
+
+    }
+
+
+
+    .ac-story-date {
+
+      font-size: 10px;
+
+    }
+
+
+
+    .ac-story-wax img {
+
+      width: 125px;
+
+      height: 125px;
+
+    }
+
+
+
+    .ac-story-botanical {
+
+      top: auto;
+
+      right: 0;
+
+      bottom: 125px;
+
+      width: 85px;
+
+      height: 200px;
+
+    }
+
+
+
+    .ac-story-lily {
+
+      right: -15px;
+
+      bottom: 0;
+
+      width: 125px;
+
+      height: 300px;
+
+    }
+
+  }
+
+/* =========================================================
+   PAGE 3 â€” ALVIYAN & CHERLINE
+   FINAL COMPLETE EDITORIAL LAYOUT
+   Desktop: one-screen composition
+   Mobile: naturally stacked composition
+========================================================= */
+
+/* Shared section and background */
+.ac-story {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #101D32;
+  color: #4A4035;
+}
+
+.ac-story-background {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ac-story-background {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  background:
+    linear-gradient(
+      rgba(25, 38, 25, 0.32),
+      rgba(25, 38, 25, 0.42)
+    ),
+    url("/images/daisy-meadow.png") center 55% / cover no-repeat;
+}
+
+.ac-story-background img {
+  display: none;
+}
+
+.ac-story-background-overlay {
+  display: none;
+}
+
+/* Stage and layered parchment */
+.ac-story-stage {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 1050px);
+  min-height: 1050px;
+  margin: 0 auto;
+}
+
+.ac-story-paper-back {
+  position: absolute;
+  z-index: 0;
+  top: 22px;
+  left: 20%;
+  width: 73%;
+  height: 1000px;
+  object-fit: fill;
+  transform: rotate(1.5deg);
+  filter: drop-shadow(0 20px 26px rgba(0, 0, 0, 0.22));
+}
+
+.ac-story-paper {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 18%;
+  width: 75%;
+  height: 1020px;
+  min-height: 0;
+  filter: drop-shadow(0 24px 30px rgba(0, 0, 0, 0.27));
+}
+
+.ac-story-paper-texture {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+}
+
+/* Typography â€” centered on the parchment */
+.ac-story-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 58px 13% 35px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.ac-story-monogram {
+  color: #A9874E;
+  font-family: var(--font-pinyon), cursive;
+  font-size: 58px;
+  font-weight: 400;
+  line-height: 1;
+  text-shadow: 0 1px 0 rgba(90, 60, 30, 0.15);
+}
+
+.ac-story-monogram span {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: 23px;
+  vertical-align: 8px;
+}
+
+.ac-story-kicker {
+  margin-top: 12px;
+  color: #92784F;
+  font-family: var(--font-cinzel), Georgia, serif;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.ac-story-title-wrap {
+  width: 100%;
+  margin-top: 18px;
+}
+
+.ac-story-title {
+  margin: 0;
+  color: #101D32;
+  font-family: var(--font-great-vibes), var(--font-pinyon), cursive;
+  font-size: 76px;
+  font-weight: 400;
+  line-height: 1.12;
+}
+
+.ac-story-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 14px auto 0;
+  color: #A88A5C;
+}
+
+.ac-story-divider span {
+  width: 48px;
+  height: 1px;
+  background: #D8BD8A;
+}
+
+.ac-story-divider i {
+  font-size: 15px;
+  font-style: normal;
+}
+
+.ac-story-copy {
+  width: 100%;
+  max-width: 440px;
+  margin: 27px auto 0;
+  color: #4A4035;
+  font-family: var(--font-eb-garamond), Georgia, serif;
+  font-size: 21px;
+  line-height: 1.42;
+  text-align: center;
+}
+
+.ac-story-copy p + p {
+  margin-top: 18px;
+}
+
+.ac-story-couple {
+  width: 100%;
+  margin-top: 27px;
+  text-align: center;
+}
+
+.ac-story-small-label {
+  color: #92784F;
+  font-family: var(--font-cinzel), Georgia, serif;
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.ac-story-names {
+  margin-top: 8px;
+  color: #101D32;
+  font-family: var(--font-cinzel), Georgia, serif;
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.ac-story-date {
+  margin-top: 8px;
+  color: #92784F;
+  font-family: var(--font-cinzel), Georgia, serif;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Original wax seal asset */
+.ac-story-wax {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.ac-story-wax img {
+  display: block;
+  width: 170px;
+  height: 170px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 10px rgba(65, 40, 20, 0.28));
+}
+
+
+/* Two overlapping vintage scalloped photographs */
+.ac-story-photos {
+  position: absolute;
+  z-index: 5;
+  top: 175px;
+  left: -1%;
+  width: 390px;
+  height: 610px;
+  pointer-events: none;
+}
+
+.ac-story-photo {
+  position: absolute;
+  width: 245px;
+  margin: 0;
+  padding: 0;
+  background: #F5F0E8;
+  border: none;
+  filter: drop-shadow(0 12px 16px rgba(0, 0, 0, 0.25));
+}
+
+.ac-story-photo-one {
+  top: 25px;
+  left: 0;
+  transform: rotate(-6deg);
+}
+
+.ac-story-photo-two {
+  top: 300px;
+  left: 85px;
+  transform: rotate(5deg);
+}
+
+.ac-story-photo-image {
+  width: 100%;
+  aspect-ratio: 600 / 830;
+  overflow: hidden;
+  background: #F5F0E8;
+
+  clip-path: polygon(
+    50% 1.4%,
+    61.7% 3.9%,
+    73.3% 2.2%,
+    83.3% 7.5%,
+    95% 10.6%,
+    96.7% 20%,
+    98% 29%,
+    95% 37%,
+    98% 46%,
+    95% 55%,
+    98% 63%,
+    95% 72%,
+    90.8% 78.3%,
+    83.3% 91.6%,
+    73.3% 94.5%,
+    60% 96.3%,
+    50% 98.5%,
+    40% 96.3%,
+    26.7% 94.5%,
+    16.7% 91.6%,
+    9.2% 78.3%,
+    5% 72%,
+    2% 63%,
+    5% 55%,
+    2% 46%,
+    5% 37%,
+    2% 29%,
+    3.3% 20%,
+    5% 10.6%,
+    16.7% 7.5%,
+    26.7% 2.2%,
+    38.3% 3.9%
+  );
+
+  border: 3px solid #D8BD8A;
+  box-sizing: border-box;
+}
+
+.ac-story-photo-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ac-story-photo figcaption {
+  padding-top: 8px;
+  color: #756044;
+  font-family: var(--font-eb-garamond), Georgia, serif;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* Gold botanical branch */
+.ac-story-botanical {
+  position: absolute;
+  z-index: 3;
+  top: 75px;
+  right: -12px;
+  display: block;
+  width: 175px;
+  height: 350px;
+  object-fit: contain;
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+/* Calla lilies â€” prominent on the right, in front of paper */
+.ac-story-lily {
+  position: absolute;
+  z-index: 6;
+  right: -115px;
+  bottom: 35px;
+  display: block;
+  width: 410px;
+  height: 615px;
+  object-fit: contain;
+  object-position: bottom center;
+  pointer-events: none;
+}
+
+/* Reveal animation safety */
+.ac-story .story-reveal,
+.ac-story .story-photo {
+  will-change: opacity, transform;
+}
+
+/* Desktop: scale the complete composition to fit one viewport */
+@media (min-width: 801px) {
+  .ac-story {
+    height: 100svh;
+    min-height: 100svh;
+    padding: 12px 20px;
+  }
+
+  .ac-story-stage {
+    width: min(100%, 1050px);
+    height: 1050px;
+    min-height: 1050px;
+    transform: scale(clamp(0.58, calc((100svh - 24px) / 1050), 0.86));
+    transform-origin: top center;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/* Tablet */
+@media (min-width: 561px) and (max-width: 800px) {
+  .ac-story {
+    min-height: 100svh;
+    padding: 35px 14px 55px;
+  }
+
+  .ac-story-stage {
+    width: min(100%, 680px);
+    min-height: 1120px;
+  }
+
+  .ac-story-paper-back {
+    top: 150px;
+    left: 8%;
+    width: 88%;
+    height: 940px;
+  }
+
+  .ac-story-paper {
+    top: 140px;
+    left: 6%;
+    width: 90%;
+    height: 960px;
+  }
+
+  .ac-story-content {
+    padding: 58px 12% 35px;
+  }
+
+  .ac-story-photos {
+    top: 0;
+    left: 50%;
+    width: 390px;
+    height: 330px;
+    transform: translateX(-50%);
+  }
+
+  .ac-story-photo {
+    width: 180px;
+    padding: 8px 8px 23px;
+  }
+
+  .ac-story-photo-two {
+    top: 35px;
+    left: 195px;
+  }
+
+  .ac-story-monogram {
+    font-size: 48px;
+  }
+
+  .ac-story-title {
+    font-size: 64px;
+  }
+
+  .ac-story-copy {
+    max-width: 390px;
+    font-size: 19px;
+  }
+
+  .ac-story-wax img {
+    width: 135px;
+    height: 135px;
+  }
+
+  .ac-story-botanical {
+    top: 260px;
+    right: 0;
+    width: 120px;
+    height: 260px;
+  }
+
+  .ac-story-lily {
+    right: -45px;
+    bottom: 20px;
+    width: 230px;
+    height: 390px;
+  }
+}
+
+/* Mobile: stacked layout, no desktop scaling */
+@media (max-width: 560px) {
+  .ac-story {
+    min-height: 100svh;
+    padding: 28px 10px 45px;
+  }
+
+  .ac-story-stage {
+    width: 100%;
+    min-height: 1320px;
+  }
+
+  .ac-story-paper-back {
+    top: 160px;
+    left: 1%;
+    width: 98%;
+    height: 1050px;
+  }
+
+  .ac-story-paper {
+    top: 150px;
+    left: 0;
+    width: 100%;
+    height: 1070px;
+  }
+
+  .ac-story-content {
+  width: 100%;
+  margin: 0;
+  padding: 235px 9% 45px;
+}
+  .ac-story-photos {
+    top: 0;
+    left: 50%;
+    width: 300px;
+    height: 210px;
+    transform: translateX(-50%);
+  }
+
+  .ac-story-photo {
+    width: 140px;
+    padding: 6px 6px 19px;
+  }
+
+  .ac-story-photo-one {
+    top: 0;
+    left: 5px;
+  }
+
+  .ac-story-photo-two {
+    top: 22px;
+    left: 155px;
+  }
+
+  .ac-story-photo figcaption {
+    padding-top: 5px;
+    font-size: 11px;
+  }
+
+  .ac-story-monogram {
+    font-size: 43px;
+  }
+
+  .ac-story-kicker {
+    margin-top: 10px;
+    font-size: 9px;
+    letter-spacing: 0.17em;
+  }
+
+  .ac-story-title-wrap {
+    margin-top: 18px;
+  }
+
+  .ac-story-title {
+    font-size: clamp(54px, 14vw, 68px);
+  }
+
+  .ac-story-divider {
+    margin-top: 12px;
+  }
+
+  .ac-story-copy {
+    margin-top: 23px;
+    font-size: 17px;
+    line-height: 1.45;
+  }
+
+  .ac-story-copy p + p {
+    margin-top: 16px;
+  }
+
+  .ac-story-couple {
+    margin-top: 25px;
+  }
+
+  .ac-story-names {
+    font-size: 14px;
+    letter-spacing: 0.09em;
+  }
+
+  .ac-story-date {
+    font-size: 10px;
+  }
+
+  .ac-story-wax {
+    margin-top: 18px;
+  }
+
+  .ac-story-wax img {
+    width: 125px;
+    height: 125px;
+  }
+
+  .ac-story-botanical {
+    top: auto;
+    right: 0;
+    bottom: 155px;
+    width: 85px;
+    height: 210px;
+  }
+
+  .ac-story-lily {
+    right: -20px;
+    bottom: 0;
+    width: 155px;
+    height: 315px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ac-story .story-reveal,
+  .ac-story .story-photo {
+    will-change: auto;
+  }
+}
+/* PAGE 3 — FINAL PHOTO POSITION */
+@media (min-width: 801px) {
+  .ac-story-photos {
+    left: -10% !important;
+    width: 330px !important;
+  }
+
+  .ac-story-photo {
+    width: 225px !important;
+  }
+
+  .ac-story-photo-one {
+    left: 0 !important;
+    top: 0 !important;
+    transform: rotate(-6deg) !important;
+  }
+
+  .ac-story-photo-two {
+    left: 45px !important;
+    top: 245px !important;
+    transform: rotate(5deg) !important;
+  }
+}
+@media (min-width: 801px) {
+  .ac-story-photos {
+    left: 2% !important;
+    top: 175px !important;
+    width: 390px !important;
+  }
+
+  .ac-story-photo-one {
+    top: 0 !important;
+    left: 0 !important;
+    transform: rotate(-5deg) !important;
+  }
+
+  .ac-story-photo-two {
+    top: 325px !important;
+    left: 115px !important;
+    transform: rotate(5deg) !important;
+  }
+}
+/* PAGE 3 — POLAROID FINAL POSITION */
+@media (min-width: 801px) {
+  .ac-story-photos {
+    left: 2% !important;
+    top: 160px !important;
+    width: 410px !important;
+  }
+
+  .ac-story-photo-one {
+    top: 0 !important;
+    left: 0 !important;
+    transform: rotate(-5deg) !important;
+  }
+
+  .ac-story-photo-two {
+    top: 375px !important;
+    left: 135px !important;
+    transform: rotate(5deg) !important;
+  }
+}
+@media (min-width: 801px) {
+  .ac-story-photos {
+    left: -1%;
+    top: 175px;
+    width: 390px;
+  }
+
+  .ac-story-photo-one {
+    top: 0;
+    left: 0;
+    transform: rotate(-5deg);
+  }
+
+  .ac-story-photo-two {
+    top: 290px;
+    left: 115px;
+    transform: rotate(5deg);
+  }
+}
+
+
+
+/* PAGE 3 — POLAROID POSITION REFINEMENT */
+@media (min-width: 801px) {
+  .ac-story-photos {
+    top: 160px !important;
+    left: 4% !important;
+  }
+
+  .ac-story-photo-one {
+  top: -35px !important;
+  left: 0 !important;
+  transform: rotate(-5deg) !important;
+
+  }
+
+  .ac-story-photo-two {
+    top: 350px !important;
+    left: 110px !important;
+    transform: rotate(5deg) !important;
+  }
+}
+
+/* =========================================
+   PAGE 4 — THE WEDDING DETAILS
+========================================= */
+
+.ac-details {
+  --details-navy: #101D32;
+  --details-ivory: #F5F0E8;
+  --details-gold: #B69A6B;
+  --details-ink: #4A4035;
+
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100svh;
+  padding: 65px 24px;
+  overflow: hidden;
+  background: var(--details-navy);
+  color: var(--details-ivory);
+}
+
+.ac-details-background {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  background:
+    linear-gradient(
+      rgba(25, 38, 25, 0.32),
+      rgba(25, 38, 25, 0.42)
+    ),
+    url("/images/daisy-meadow.png") center 55% / cover no-repeat;
+}
+
+.ac-details-inner {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 900px);
+  margin: auto;
+  text-align: center;
+}
+
+.ac-details-heading {
+  margin-bottom: 38px;
+}
+
+.ac-details-monogram {
+  display: block;
+  color: var(--details-gold);
+  font-family: var(--font-great-vibes), cursive;
+  font-size: 42px;
+  line-height: 1;
+}
+
+.ac-details-monogram i {
+  font-size: 0.65em;
+  font-style: normal;
+}
+
+.ac-details-kicker {
+  margin-top: 12px;
+  color: #D8BD8A;
+  font-family: var(--font-cinzel), serif;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.ac-details-title {
+  margin-top: 12px;
+  color: var(--details-ivory);
+  font-family: var(--font-great-vibes), cursive;
+  font-size: clamp(48px, 5vw, 66px);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.ac-details-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  margin-top: 12px;
+  color: var(--details-gold);
+}
+
+.ac-details-divider span {
+  width: 42px;
+  height: 1px;
+  background: var(--details-gold);
+}
+
+.ac-details-divider i {
+  font-style: normal;
+}
+
+.ac-details-date {
+  margin-top: 14px;
+  color: #E0C99F;
+  font-family: var(--font-cinzel), serif;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.ac-details-date span {
+  padding: 0 8px;
+  color: var(--details-gold);
+}
+
+.ac-details-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 26px;
+  width: min(100%, 730px);
+  margin: 0 auto;
+}
+
+
+.ac-details-card {
+  position: relative;
+  isolation: isolate;
+  min-height: 300px;
+  padding: 38px 28px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--details-ink);
+  filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.22));
+  text-align: center;
+}
+
+.ac-details-card::before,
+.ac-details-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  clip-path: polygon(
+  50% 0%,
+  58% 2%,
+  66% 0%,
+  74% 2%,
+  82% 0%,
+  90% 4%,
+  96% 10%,
+  98% 18%,
+  100% 25%,
+  98% 33%,
+  100% 41%,
+  98% 50%,
+  100% 59%,
+  98% 67%,
+  100% 75%,
+  96% 90%,
+  90% 96%,
+  82% 100%,
+  74% 98%,
+  66% 100%,
+  58% 98%,
+  50% 100%,
+  42% 98%,
+  34% 100%,
+  26% 98%,
+  18% 100%,
+  10% 96%,
+  4% 90%,
+  0% 75%,
+  2% 67%,
+  0% 59%,
+  2% 50%,
+  0% 41%,
+  2% 33%,
+  0% 25%,
+  2% 18%,
+  4% 10%,
+  10% 4%,
+  18% 0%,
+  26% 2%,
+  34% 0%,
+  42% 2%
+);
+}
+
+
+.ac-details-card {
+  position: relative;
+  isolation: isolate;
+  min-height: 330px;
+    padding: 0px 28px 60px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--details-ink);
+  filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.22));
+  text-align: center;
+}
+
+.ac-details-card-frame {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.ac-details-card > *:not(.ac-details-card-frame) {
+  position: relative;
+  z-index: 1;
+}
+
+
+
+.ac-details-card-number {
+  position: absolute;
+  top: 17px;
+  right: 20px;
+  color: #B69A6B;
+  font-family: var(--font-cinzel), serif;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+}
+
+.ac-details-card-icon {
+  color: var(--details-gold);
+  font-size: 22px;
+}
+
+.ac-details-card-kicker {
+  margin-top: 8px;
+  color: #A9874E;
+  font-family: var(--font-cinzel), serif;
+  font-size: 9px;
+  letter-spacing: 0.23em;
+  text-transform: uppercase;
+}
+
+.ac-details-card h3 {
+  margin-top: 7px;
+  color: var(--details-navy);
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: 29px;
+  font-weight: 500;
+}
+
+.ac-details-card-line {
+  width: 42px;
+  height: 1px;
+  margin: 15px auto;
+  background: var(--details-gold);
+}
+
+.ac-details-info-label {
+  margin-top: 11px;
+  color: #A9874E;
+  font-family: var(--font-cinzel), serif;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.ac-details-info-value {
+  margin-top: 4px;
+  color: var(--details-ink);
+  font-family: var(--font-eb-garamond), Georgia, serif;
+  font-size: 17px;
+  font-style: italic;
+}
+
+.ac-details-footer {
+  margin-top: 28px;
+  color: #E0C99F;
+  font-family: var(--font-eb-garamond), Georgia, serif;
+  font-size: 17px;
+  font-style: italic;
+}
+
+.ac-details-lily {
+  position: absolute;
+  z-index: 1;
+  right: 1%;
+  bottom: -95px;
+  width: clamp(130px, 17vw, 220px);
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.ac-details-botanical {
+  position: absolute;
+  z-index: 0;
+  top: 8%;
+  right: 9%;
+  width: 85px;
+  height: 260px;
+  object-fit: contain;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .ac-details {
+    min-height: 100svh;
+    padding: 55px 18px 65px;
+  }
+
+  .ac-details-heading {
+    margin-bottom: 28px;
+  }
+
+  .ac-details-monogram {
+    font-size: 36px;
+  }
+
+  .ac-details-title {
+    font-size: 52px;
+  }
+
+  .ac-details-date {
+    font-size: 10px;
+    letter-spacing: 0.13em;
+  }
+
+  .ac-details-cards {
+  grid-template-columns: 1fr;
+  gap: 24px;
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.ac-details-card {
+  min-height: 330px;
+  padding: 0 24px 55px;
+}
+
+  .ac-details-card h3 {
+    font-size: 26px;
+  }
+
+  .ac-details-footer {
+    max-width: 280px;
+    margin: 24px auto 0;
+    font-size: 15px;
+  }
+
+  .ac-details-lily {
+    right: -28px;
+    bottom: -55px;
+    width: 115px;
+    opacity: 0.75;
+  }
+
+  .ac-details-botanical {
+    top: 5%;
+    right: 0;
+    width: 55px;
+    height: 180px;
+  }
+}
+
+/* =========================================
+   PAGE 5 — COUNTING DOWN TO FOREVER
+========================================= */
+
+.ac-countdown {
+  --count-navy: #101D32;
+  --count-ivory: #F5F0E8;
+  --count-gold: #D8BD8A;
+
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100svh;
+  padding: 80px 24px;
+  overflow: hidden;
+  background: var(--count-navy);
+  color: var(--count-ivory);
+}
+
+
+
+.ac-countdown-background {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  background:
+    linear-gradient(
+      rgba(20, 29, 24, 0.35),
+      rgba(20, 29, 24, 0.42)
+    ),
+    url("/images/daisy-meadow.png") center 55% / cover no-repeat;
+}
+
+.ac-countdown-background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 20%,
+    rgba(15, 24, 18, 0.25) 100%
+  );
+  pointer-events: none;
+}
+
+.ac-countdown-background::after {
+  content: none;
+}
+
+
+
+.ac-countdown-inner {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 850px);
+  margin: auto;
+  text-align: center;
+}
+
+.ac-countdown-kicker {
+  color: var(--count-gold);
+  font-family: var(--font-cinzel), serif;
+  font-size: 10px;
+  letter-spacing: 0.35em;
+}
+
+.ac-countdown-title {
+  margin-top: 25px;
+  color: var(--count-ivory);
+  font-family: var(--font-great-vibes), cursive;
+  font-size: clamp(58px, 8vw, 100px);
+  font-weight: 400;
+  line-height: 0.95;
+}
+
+.ac-countdown-title span {
+  display: block;
+  margin-top: 10px;
+  color: var(--count-gold);
+}
+
+.ac-countdown-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 30px auto 20px;
+  color: var(--count-gold);
+}
+
+.ac-countdown-divider span {
+  width: 55px;
+  height: 1px;
+  background: var(--count-gold);
+  opacity: 0.8;
+}
+
+.ac-countdown-divider i {
+  font-style: normal;
+  font-size: 17px;
+}
+
+.ac-countdown-date {
+  color: var(--count-ivory);
+  font-family: var(--font-cinzel), serif;
+  font-size: 13px;
+  letter-spacing: 0.28em;
+}
+
+.ac-countdown-timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 3vw, 35px);
+  margin: 65px auto 0;
+}
+
+.ac-countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 75px;
+}
+
+.ac-countdown-number {
+  color: var(--count-ivory);
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(42px, 7vw, 76px);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.ac-countdown-label {
+  margin-top: 13px;
+  color: var(--count-gold);
+  font-family: var(--font-cinzel), serif;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.ac-countdown-colon {
+  margin-top: -20px;
+  color: var(--count-gold);
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: 45px;
+  opacity: 0.7;
+}
+
+.ac-countdown-footer {
+  margin-top: 55px;
+  color: #E5D7BE;
+  font-family: var(--font-eb-garamond), Georgia, serif;
+  font-size: 20px;
+  font-style: italic;
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+  .ac-countdown {
+    padding: 65px 16px;
+  }
+
+  .ac-countdown-kicker {
+    font-size: 8px;
+    letter-spacing: 0.25em;
+  }
+
+  .ac-countdown-title {
+    font-size: 62px;
+  }
+
+  .ac-countdown-date {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+  }
+
+  .ac-countdown-timer {
+    gap: 7px;
+    margin-top: 50px;
+  }
+
+  .ac-countdown-unit {
+    min-width: 58px;
+  }
+
+  .ac-countdown-number {
+    font-size: clamp(34px, 10vw, 48px);
+  }
+
+  .ac-countdown-label {
+    margin-top: 10px;
+    font-size: 7px;
+    letter-spacing: 0.12em;
+  }
+
+  .ac-countdown-colon {
+    font-size: 30px;
+    margin-top: -15px;
+  }
+
+  .ac-countdown-footer {
+    max-width: 270px;
+    margin: 45px auto 0;
+    font-size: 17px;
+  }
+
+}
+/* Remove calla lilies from Our Story page */
+.ac-story .ac-story-lily {
+  display: none !important;
+}
+/* Remove calla lilies from Wedding Details page */
+.ac-details .ac-story-lily,
+.ac-details .ac-details-lily {
+  display: none !important;
 }

@@ -36,103 +36,111 @@ export default function OurStory() {
   ];
 
   return (
-    <section className="bg-[#F5F0E8] px-6 py-24">
-      <div className="max-w-4xl mx-auto">
+    <section className="relative overflow-hidden bg-[#F5F0E8] px-5 py-24 sm:px-6">
+      <div className="pointer-events-none absolute right-[-100px] top-20 h-64 w-64 rounded-full border border-[#C5AC83]/20" />
+      <div className="pointer-events-none absolute bottom-20 left-[-100px] h-64 w-64 rounded-full border border-[#C5AC83]/20" />
 
-        <div className="text-center mb-16">
-          <p className="text-[#9B8058] tracking-[0.4em] text-xs uppercase mb-6">
+      <div className="relative mx-auto max-w-5xl">
+        <div className="mb-20 text-center">
+          <p className="mb-5 text-[10px] uppercase tracking-[0.5em] text-[#9B8058]">
             Our Journey
           </p>
 
-          <h2 className="font-serif text-4xl md:text-6xl text-[#756044]">
-            Every Love Has a Story
+          <div className="mx-auto mb-6 h-px w-12 bg-[#B69A6B]" />
+
+          <h2 className="font-serif text-4xl leading-tight text-[#14233A] sm:text-6xl">
+            Every Love
+            <br />
+            <span className="italic text-[#A88B5D]">Has a Story</span>
           </h2>
 
-          <p className="font-serif italic text-[#9B8058] mt-5 text-lg">
+          <p className="mt-6 font-serif text-lg italic text-[#8C785A]">
             And this is ours...
           </p>
         </div>
 
-        <div className="relative max-w-3xl mx-auto">
-
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-[#C5AC83]" />
+        <div className="relative mx-auto max-w-4xl">
+          <div className="absolute bottom-0 left-[15px] top-0 w-px bg-[#C5AC83] md:left-1/2 md:-translate-x-1/2" />
 
           {stories.map((story, index) => (
             <div
               key={story.number}
-              className={`relative flex mb-16 ${
+              className={`relative mb-16 flex last:mb-0 ${
                 index % 2 === 0
                   ? "md:flex-row"
                   : "md:flex-row-reverse"
               }`}
             >
-              <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[#B69A6B] border-2 border-[#F5F0E8] z-10" />
+              <div className="absolute left-[15px] top-8 z-10 flex h-3 w-3 -translate-x-1/2 items-center justify-center rounded-full border-2 border-[#F5F0E8] bg-[#B69A6B] shadow-[0_0_0_4px_#C5AC8333] md:left-1/2" />
 
-              <div className="ml-12 md:ml-0 md:w-1/2 md:px-10 w-full">
-                <div className="border border-[#C5AC83] bg-[#F8F4ED] p-5 md:p-7 shadow-sm">
-
-                  <p className="text-[#B69A6B] tracking-[0.3em] text-xs mb-3">
+              <div className="ml-10 w-full md:ml-0 md:w-1/2 md:px-10">
+                <div className="border border-[#C5AC83]/70 bg-[#FBF8F2] p-6 shadow-[0_12px_35px_rgba(20,35,58,0.06)] sm:p-8">
+                  <p className="mb-4 text-[10px] tracking-[0.35em] text-[#A88B5D]">
                     CHAPTER {story.number}
                   </p>
 
                   {index === 0 && (
-                    <div className="mb-6 rotate-[-2deg] bg-white p-2 pb-5 shadow-sm">
+                    <div className="mb-7 rotate-[-2deg] bg-white p-2 pb-5 shadow-md">
                       <img
                         src="/images/couple.jpg"
                         alt="Alviyan and Cherline"
-                        className="w-full h-48 object-cover"
+                        className="h-48 w-full object-cover sm:h-56"
                       />
-                      <p className="text-center font-serif italic text-[#9B8058] mt-3 text-sm">
+                      <p className="mt-3 text-center font-serif text-sm italic text-[#8C785A]">
                         A memory to remember
                       </p>
                     </div>
                   )}
 
                   {index === 2 && (
-                    <div className="mb-6 rotate-[2deg] bg-white p-2 pb-5 shadow-sm">
+                    <div className="mb-7 rotate-[2deg] bg-white p-2 pb-5 shadow-md">
                       <img
                         src="/images/couple.jpg"
                         alt="A beautiful memory of Alviyan and Cherline"
-                        className="w-full h-48 object-cover"
+                        className="h-48 w-full object-cover sm:h-56"
                       />
+                      <p className="mt-3 text-center font-serif text-sm italic text-[#8C785A]">
+                        A beautiful moment together
+                      </p>
                     </div>
                   )}
 
-                  <h3 className="font-serif text-2xl text-[#756044] mb-2">
+                  <h3 className="font-serif text-2xl leading-snug text-[#14233A] sm:text-3xl">
                     {story.title}
                   </h3>
 
-                  <p className="font-serif italic text-[#B69A6B] mb-4">
+                  <p className="mt-2 font-serif text-base italic text-[#A88B5D]">
                     {story.subtitle}
                   </p>
 
-                  <p className="text-[#8C785A] text-sm leading-7">
+                  <p className="mt-5 text-sm leading-7 text-[#756B5D]">
                     {story.description}
                   </p>
 
-                  <div className="w-10 h-px bg-[#B69A6B] my-5" />
+                  <div className="my-6 h-px w-12 bg-[#B69A6B]" />
 
-                  <p className="text-[#9B8058] text-xs tracking-widest uppercase">
+                  <p className="text-[10px] uppercase tracking-[0.25em] text-[#9B8058]">
                     {story.date}
                   </p>
-
                 </div>
               </div>
+
+              <div className="hidden w-1/2 md:block" />
             </div>
           ))}
-
         </div>
 
-        <div className="text-center mt-20">
-          <p className="font-serif italic text-3xl text-[#9B8058]">
+        <div className="mt-24 text-center">
+          <div className="mx-auto mb-7 h-px w-12 bg-[#B69A6B]" />
+
+          <p className="font-serif text-3xl italic text-[#14233A] sm:text-4xl">
             To be continued...
           </p>
 
-          <p className="text-[#B19B78] tracking-[0.3em] text-xs uppercase mt-4">
+          <p className="mt-5 text-[10px] uppercase tracking-[0.4em] text-[#A88B5D]">
             Alviyan & Cherline
           </p>
         </div>
-
       </div>
     </section>
   );

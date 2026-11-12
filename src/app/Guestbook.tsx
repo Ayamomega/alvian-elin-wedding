@@ -1,7 +1,8 @@
 
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
 import { supabase } from "../lib/supabase";
 
 type Wish = {
@@ -15,6 +16,9 @@ type GuestbookProps = {
 };
 
 const Guestbook = ({ guestName }: GuestbookProps) => {
+    const sectionRef = useRef<HTMLElement>(null);
+const headingRef = useRef<HTMLHeadingElement>(null);
+const formRef = useRef<HTMLFormElement>(null);
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [wishes, setWishes] = useState<Wish[]>([]);
@@ -22,13 +26,78 @@ const Guestbook = ({ guestName }: GuestbookProps) => {
   const [sending, setSending] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-  useEffect(() => {
-  if (guestName) {
-    setName(guestName);
-  }
-}, [guestName]);
+// GUESTBOOK — ROMANTIC SCROLL REVEAL
+useEffect(() => {
+  const section = sectionRef.current;
+  const heading = headingRef.current;
+  const form = formRef.current;
 
-  // Mengambil ucapan dari Supabase saat halaman dibuka
+  if (!section || !heading || !form) return;
+
+  const listHeading = section.querySelector(".guestbook-list-heading");
+  const cards = section.querySelectorAll(".guestbook-card");
+
+  gsap.set([heading, form, listHeading], {
+    opacity: 0,
+    y: 28,
+  });
+
+  gsap.set(cards, {
+    opacity: 0,
+    y: 25,
+  });
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (!entry.isIntersecting) return;
+
+      const timeline = gsap.timeline();
+
+      timeline
+        .to(heading, {
+          opacity: 1,
+          y: 0,
+          duration: 1.2,
+          ease: "power3.out",
+        })
+        .to(form, {
+          opacity: 1,
+          y: 0,
+          duration: 1.3,
+          ease: "power3.out",
+        }, "-=0.6")
+        .to(listHeading, {
+          opacity: 1,
+          y: 0,
+          duration: 1.1,
+          ease: "power3.out",
+        }, "-=0.4")
+        .to(cards, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          stagger: 0.18,
+          ease: "power3.out",
+        }, "-=0.3");
+
+      observer.disconnect();
+    },
+    { threshold: 0.15 }
+  );
+
+  observer.observe(section);
+
+  return () => {
+    observer.disconnect();
+    gsap.killTweensOf([heading, form, listHeading, ...Array.from(cards)]);
+  };
+}, [loading, wishes.length]);
+  useEffect(() => {
+    if (guestName) {
+      setName(guestName);
+    }
+  }, [guestName]);
+
   useEffect(() => {
     const fetchWishes = async () => {
       setLoading(true);
@@ -57,7 +126,6 @@ const Guestbook = ({ guestName }: GuestbookProps) => {
     fetchWishes();
   }, []);
 
-  // Mengirim ucapan ke Supabase
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -75,15 +143,12 @@ const Guestbook = ({ guestName }: GuestbookProps) => {
     setSending(false);
 
     if (error) {
-  console.log("Guestbook error message:", error.message);
-  console.log("Guestbook error details:", error.details);
-  console.log("Guestbook error code:", error.code);
-
-  setErrorMessage(
-    error.message || "Unknown error. Please check Supabase."
-  );
-  return;
-}
+      console.error("Guestbook submission failed:", error);
+      setErrorMessage(
+        error.message || "Unknown error. Please check Supabase."
+      );
+      return;
+    }
 
     const newWish: Wish = {
       id: crypto.randomUUID(),
@@ -97,104 +162,168 @@ const Guestbook = ({ guestName }: GuestbookProps) => {
     setSuccessMessage("Thank you for your beautiful wishes!");
   };
 
+  const inputClass =
+    "w-full rounded-xl border border-[#D5C3A2] bg-[#FFFEFA]/95 p-4 text-sm font-medium text-[#344B3B] outline-none transition placeholder:text-[#958A78] focus:border-[#A88B60] focus:ring-2 focus:ring-[#C6A878]/25";
+
+  const labelClass =
+    "mb-2 block text-[11px] font-semibold uppercase tracking-[0.18em] text-[#526B53]";
+
   return (
-    <section className="w-full max-w-2xl mx-auto py-20 px-5 text-center">
-      
-      <p className="text-sm tracking-[0.35em] uppercase text-amber-800 mb-3">
-        Words of Love
-      </p>
+    <section
+  ref={sectionRef}
+  id="guestbook-section"
+      className="relative isolate w-full overflow-hidden py-24 text-center"
+    >
+      {/* Ivory Daisy Background */}
+      <div
+        className="absolute inset-0 -z-10 bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/images/guestbook/ivory-daisy-bg.png')",
+        }}
+      />
 
-      <h2 className="text-3xl md:text-4xl font-serif text-gray-900 mb-4">
-        Digital Guestbook
-      </h2>
+      {/* Soft Ivory Overlay */}
+      <div className="absolute inset-0 -z-10 bg-[#FFFDF7]/25" />
 
-      <p className="text-gray-700 mb-10">
-        Leave your warm wishes and blessings for our new journey.
-      </p>
+      <div className="relative z-10 mx-auto w-full max-w-3xl px-5">
 
-      <form
-        onSubmit={handleSubmit}
-        className="text-left border border-amber-200 rounded-2xl p-6 md:p-8 space-y-5"
-      >
-        <div>
-          <label className="block text-sm font-medium text-gray-800 mb-2">
-            Your Name
-          </label>
+        {/* Heading */}
+        <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.4em] text-[#A18459]">
+          Words of Love
+        </p>
 
-         <input
-  type="text"
-  value={guestName || name}
-  onChange={(e) => setName(e.target.value)}
-  placeholder="Enter your name"
-  readOnly={!!guestName}
-  required
-  className="w-full border border-gray-300 rounded-lg p-3 text-gray-900 bg-transparent outline-none focus:border-amber-600"
-/>
-        </div>
+        <h2 
+        ref={headingRef}className="mb-5 font-editorial text-4xl font-normal text-[#344B3B] md:text-6xl">
+          Leave Your Wishes
+        </h2>
 
-        <div>
-          <label className="block text-sm font-medium text-gray-800 mb-2">
-            Your Wishes
-          </label>
+        <div className="mx-auto mb-7 h-px w-16 bg-[#C6A878]" />
 
-          <textarea
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            placeholder="Write your wishes for the couple..."
-            rows={4}
-            required
-            className="w-full border border-gray-300 rounded-lg p-3 text-gray-900 bg-transparent outline-none focus:border-amber-600"
-          />
-        </div>
+        <p className="mx-auto mb-12 max-w-md font-editorial text-lg leading-8 text-[#756B5B]">
+          Your love and kind words will become a beautiful part of our story.
+          Leave us a little note to remember.
+        </p>
 
-        {errorMessage && (
-          <p className="text-red-600 text-sm">{errorMessage}</p>
-        )}
-
-        {successMessage && (
-          <p className="text-green-700 text-sm text-center">
-            {successMessage}
-          </p>
-        )}
-
-        <button
-          type="submit"
-          disabled={sending}
-          className="w-full bg-amber-800 hover:bg-amber-900 disabled:opacity-50 text-white py-3 rounded-lg tracking-widest uppercase text-sm transition"
+        {/* Guestbook Form */}
+        <form
+         ref={formRef}
+          onSubmit={handleSubmit}
+          className="space-y-6 rounded-2xl border border-[#D8C5A2]/90 bg-[#FFFEF9]/90 p-6 text-left shadow-[0_18px_55px_rgba(70,75,48,0.13)] backdrop-blur-sm md:p-10"
         >
-          {sending ? "Sending..." : "Send Wishes"}
-        </button>
-      </form>
+          <div>
+            <label className={labelClass}>
+              Your Name
+            </label>
 
-      <div className="mt-14">
-        <h3 className="text-2xl font-serif text-gray-900 mb-8">
-          Wishes From Our Loved Ones
-        </h3>
-
-        {loading ? (
-          <p className="text-gray-500 italic">Loading wishes...</p>
-        ) : wishes.length === 0 ? (
-          <p className="text-gray-500 italic">
-            Be the first to leave a wish.
-          </p>
-        ) : (
-          <div className="space-y-4 text-left">
-            {wishes.map((wish) => (
-              <div
-                key={wish.id}
-                className="border border-amber-200 rounded-xl p-5"
-              >
-                <p className="text-gray-800 leading-relaxed">
-                  "{wish.message}"
-                </p>
-
-                <p className="text-amber-800 font-semibold mt-4 text-sm">
-                  — {wish.name}
-                </p>
-              </div>
-            ))}
+            <input
+              type="text"
+              value={guestName || name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Enter your name"
+              readOnly={!!guestName}
+              required
+              className={`${inputClass} ${
+                guestName ? "cursor-not-allowed bg-[#F1EBDD]" : ""
+              }`}
+            />
           </div>
-        )}
+
+          <div>
+            <label className={labelClass}>
+              Your Wishes
+            </label>
+
+            <textarea
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              placeholder="Write your wishes for Alviyan & Cherline..."
+              rows={5}
+              required
+              className={`${inputClass} resize-y leading-7`}
+            />
+          </div>
+
+          {errorMessage && (
+            <p className="rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-700">
+              {errorMessage}
+            </p>
+          )}
+
+          {successMessage && (
+            <p className="rounded-xl border border-[#C6A878]/50 bg-[#F7F2E7] p-4 text-center text-sm font-medium text-[#526B53]">
+              🤍 {successMessage}
+            </p>
+          )}
+
+          <button
+            type="submit"
+            disabled={sending}
+            className="w-full rounded-xl border border-[#B99B6E] bg-[#B99B6E] px-6 py-4 text-[11px] font-bold uppercase tracking-[0.25em] text-white shadow-md transition duration-300 hover:border-[#8F754E] hover:bg-[#8F754E] disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            {sending ? "Sending..." : "Send Your Wishes"}
+          </button>
+
+          <p className="pt-1 text-center font-editorial text-sm italic text-[#8A795F]">
+            With love, thank you for being part of our special day.
+          </p>
+        </form>
+
+        {/* Wishes List */}
+        <div className="mt-20">
+
+          <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.35em] text-[#A18459]">
+            From Our Loved Ones
+          </p>
+
+          <h3 className="guestbook-list-heading mb-4 font-editorial text-3xl font-normal text-[#344B3B] md:text-4xl">
+            Beautiful Wishes
+          </h3>
+
+          <div className="mx-auto mb-10 h-px w-12 bg-[#C6A878]" />
+
+          {loading ? (
+            <p className="font-editorial italic text-[#806B4E]">
+              Gathering your wishes...
+            </p>
+          ) : wishes.length === 0 ? (
+            <div className="rounded-2xl border border-[#D5C5A8] bg-[#FFFEFA]/85 p-10 shadow-sm backdrop-blur-sm">
+              <p className="font-editorial text-lg italic text-[#806B4E]">
+                Be the first to leave a little note of love.
+              </p>
+              <span className="mt-4 block text-2xl text-[#B99B6E]">❧</span>
+            </div>
+          ) : (
+            <div className="space-y-5 text-left">
+              {wishes.map((wish) => (
+                <article
+                  key={wish.id}
+                  className="guestbook-card rounded-2xl border border-[#D5C5A8]/90 bg-[#FFFEFA]/90 p-7 shadow-[0_8px_28px_rgba(70,75,48,0.08)] backdrop-blur-sm transition duration-300 hover:shadow-[0_12px_35px_rgba(70,75,48,0.13)] md:p-9"
+                >
+                  <div className="mb-2 font-editorial text-5xl leading-none text-[#B99B6E]">
+                    “
+                  </div>
+
+                  <p className="whitespace-pre-wrap font-editorial text-base leading-8 text-[#526052]">
+                    {wish.message}
+                  </p>
+
+                  <div className="mt-6 flex items-center gap-3">
+                    <div className="h-px w-8 bg-[#B99B6E]" />
+
+                    <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#806B4E]">
+                      {wish.name}
+                    </p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="mt-16 font-editorial text-2xl italic text-[#A18459]">
+          With Love & Gratitude
+        </div>
+
       </div>
     </section>
   );

@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useRef, useState } from "react";
@@ -8,10 +9,10 @@ import WeddingDetails from "./WeddingDetails";
 import RSVP from "./RSVP";
 import Guestbook from "./Guestbook";
 import MusicPlayer from "./MusicPlayer";
+
 export default function Home() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [invitationCode, setInvitationCode] = useState<string | null>(null);
-
   const [invitedGuest, setInvitedGuest] = useState<{
     id: string;
     guest_name: string;
@@ -20,19 +21,15 @@ export default function Home() {
 
   useEffect(() => {
     const fetchInvitedGuest = async () => {
-      const invitationCode = new URLSearchParams(
-        window.location.search
-      ).get("to");
+      const code = new URLSearchParams(window.location.search).get("to");
 
-      if (!invitationCode) return;
+      if (!code) return;
 
-setInvitationCode(invitationCode);
+      setInvitationCode(code);
 
-const { data, error } = await supabase.rpc(
+      const { data, error } = await supabase.rpc(
         "get_invited_guest_by_code_v2",
-        {
-          p_code: invitationCode,
-        }
+        { p_code: code }
       );
 
       if (error) {
@@ -47,112 +44,166 @@ const { data, error } = await supabase.rpc(
 
     fetchInvitedGuest();
   }, []);
-  return (<main className="min-h-screen bg-[#F5F0E8] flex flex-col items-center p-5">
-    
-      <div className="relative w-full max-w-2xl min-h-[750px] border border-[#C5AC83] p-3">
-        <div className="min-h-[724px] border border-[#C5AC83]/60 flex flex-col items-center justify-center text-center px-6 py-16 relative overflow-hidden">
 
-          {/* Decorative elements */}
-          <div className="absolute top-8 left-8 text-[#B69A6B] text-3xl">✳</div>
-          <div className="absolute top-8 right-8 text-[#B69A6B] text-3xl">✳</div>
-          <div className="absolute bottom-8 left-8 text-[#B69A6B] text-3xl">✳</div>
-          <div className="absolute bottom-8 right-8 text-[#B69A6B] text-3xl">✳</div>
-
-          {/* Wedding identity */}
-          <p className="text-[#9B8058] tracking-[0.4em] text-[10px] uppercase mb-8">
-            The Wedding Celebration
-          </p>
-
-          <p className="font-serif italic text-[#9B8058] text-xl mb-5">
-            Together with our families
-          </p>
-
-          <h1 className="font-serif text-5xl md:text-7xl text-[#756044] tracking-wide">
-            Alviyan
-          </h1>
-
-          <p className="font-serif italic text-3xl text-[#B69A6B] my-3">
-            &
-          </p>
-
-          <h1 className="font-serif text-5xl md:text-7xl text-[#756044] tracking-wide">
-            Cherline
-          </h1>
-          <div className="mt-8 mb-6 w-52 h-64 md:w-60 md:h-72 overflow-hidden rounded-t-full border-2 border-[#C5AC83] p-1">
-  <img
-    src="/images/couple.jpg"
-    alt="Alviyan and Cherline"
-    className="w-full h-full object-cover rounded-t-full"
-  />
-</div>
-
-          <div className="w-16 h-px bg-[#B69A6B] my-9" />
-
-          <p className="text-[#8C785A] tracking-[0.3em] text-xs uppercase">
-            A Beautiful Beginning
-          </p>
-
-          <p className="font-serif italic text-[#9B8058] text-lg mt-3">
-            We invite you to celebrate our love
-          </p>
-
-          <a
-  href="#invitation"
-  onClick={() => {
+  const openInvitation = () => {
     audioRef.current?.play().catch((error) => {
       console.error("Music playback failed:", error);
     });
-  }}
-  className="mt-12 border border-[#AD9165] text-[#806B4D] px-10 py-3 text-[10px] tracking-[0.3em] uppercase hover:bg-[#AD9165] hover:text-white transition duration-500"
->
-  Open Invitation
-</a>
 
-          <p className="absolute bottom-16 text-[#B19B78] text-[9px] tracking-[0.3em] uppercase">
-            Vielin Wedding Planner
+    document.getElementById("invitation")?.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
+
+  return (
+    <main className="min-h-screen overflow-hidden bg-[#F8F5EF] text-[#101D32]">
+
+      {/* HERO */}
+      <section className="relative flex min-h-screen flex-col items-center justify-center px-6 py-20 text-center">
+
+        <div className="absolute inset-5 border border-[#C6A878]/50 pointer-events-none" />
+        <div className="absolute inset-7 border border-[#C6A878]/20 pointer-events-none" />
+
+        <div className="relative z-10 animate-reveal flex w-full max-w-3xl flex-col items-center">
+
+          <p className="mb-8 text-[10px] uppercase tracking-[0.45em] text-[#A88B60]">
+            A Letter From Our Hearts
           </p>
 
+          <p className="font-script text-4xl text-[#B89A6B]">
+            Together with our families
+          </p>
+
+          <h1 className="mt-7 font-editorial text-6xl font-normal tracking-wide text-[#101D32] md:text-8xl">
+            Alviyan
+          </h1>
+
+          <span className="my-1 font-script text-6xl text-[#C6A878]">
+            &
+          </span>
+
+          <h1 className="font-editorial text-6xl font-normal tracking-wide text-[#101D32] md:text-8xl">
+            Cherline
+          </h1>
+
+          <div className="my-10 h-[1px] w-20 bg-[#C6A878]" />
+
+          <div className="relative h-[340px] w-[260px] overflow-hidden rounded-t-[140px] border border-[#C6A878] p-2 md:h-[420px] md:w-[320px]">
+            <img
+              src="/images/couple.jpg"
+              alt="Alviyan and Cherline"
+              className="h-full w-full rounded-t-[130px] object-cover"
+            />
+          </div>
+
+          <p className="mt-10 text-[10px] uppercase tracking-[0.4em] text-[#8B806F]">
+            Saturday
+          </p>
+
+          <p className="mt-2 font-editorial text-3xl tracking-widest text-[#101D32]">
+            21 . 10 . 2028
+          </p>
+
+          <button
+            onClick={openInvitation}
+            className="mt-12 border border-[#B89A6B] px-12 py-4 text-[10px] uppercase tracking-[0.3em] text-[#101D32] transition duration-500 hover:bg-[#101D32] hover:text-[#F8F5EF]"
+          >
+            Discover Our Invitation
+          </button>
+
+          <p className="mt-10 font-script text-2xl text-[#B89A6B]">
+            The beginning of forever
+          </p>
         </div>
-      </div>
-            <section
+      </section>
+
+      {/* PERSONAL INVITATION */}
+      <section
         id="invitation"
-        className="min-h-screen bg-[#F5F0E8] flex flex-col items-center justify-center text-center px-6 py-20"
+        className="relative flex min-h-screen flex-col items-center justify-center bg-[#101D32] px-6 py-28 text-center text-[#F8F5EF]"
       >
-        <p className="text-[#9B8058] tracking-[0.4em] text-xs uppercase mb-8">
-          You Are Invited
+        <div className="absolute inset-5 border border-[#C6A878]/30 pointer-events-none" />
+
+        <div className="relative z-10 mx-auto max-w-2xl animate-reveal">
+
+          <p className="text-[10px] uppercase tracking-[0.45em] text-[#D2B98F]">
+            A Personal Invitation
+          </p>
+
+          <h2 className="mt-12 font-script text-6xl text-[#D2B98F] md:text-7xl">
+            Dear
+          </h2>
+
+          <h3 className="mt-3 font-editorial text-4xl font-normal md:text-6xl">
+            {invitedGuest
+              ? invitedGuest.guest_name
+              : "Beloved Guest"}
+          </h3>
+
+          <div className="mx-auto my-10 h-px w-16 bg-[#C6A878]" />
+
+          <p className="mx-auto max-w-lg font-editorial text-xl leading-9 text-[#E5DDD0] md:text-2xl">
+            With joyful hearts and the blessing of our families,
+            we would be honored to have you join us as we celebrate
+            the beginning of our forever.
+          </p>
+
+          <p className="mt-12 font-script text-5xl text-[#D2B98F]">
+            Alviyan & Cherline
+          </p>
+
+          <p className="mt-5 text-[10px] uppercase tracking-[0.35em] text-[#C6A878]">
+            With love, we invite you
+          </p>
+        </div>
+      </section>
+
+      {/* COUNTDOWN */}
+      <section className="bg-[#F8F5EF] px-4 py-20">
+        <Countdown />
+      </section>
+
+      {/* OUR STORY */}
+      <section className="bg-[#F0EBE2] px-4 py-20">
+        <OurStory />
+      </section>
+
+      {/* WEDDING DETAILS */}
+      <section className="bg-[#F8F5EF] px-4 py-20">
+        <WeddingDetails />
+      </section>
+
+      {/* RSVP */}
+      <section className="bg-[#101D32] px-4 py-20">
+        <RSVP
+          invitedGuest={invitedGuest}
+          invitationCode={invitationCode}
+        />
+      </section>
+
+      {/* GUESTBOOK */}
+      <section className="bg-[#F8F5EF] px-4 py-20">
+        <Guestbook guestName={invitedGuest?.guest_name ?? ""} />
+      </section>
+
+      {/* CLOSING */}
+      <footer className="bg-[#101D32] px-6 py-24 text-center text-[#F8F5EF]">
+        <p className="font-script text-5xl text-[#D2B98F]">
+          With Love
         </p>
 
-        <h2 className="font-serif text-4xl md:text-5xl text-[#756044] mb-6">
-  {invitedGuest
-    ? `Dear ${invitedGuest.guest_name}`
-    : "Dear Beloved Guest"}
-</h2>
-
-        <div className="w-16 h-px bg-[#B69A6B] mb-8" />
-
-        <p className="max-w-md text-[#8C785A] leading-8 text-sm">
-          With joyful hearts and the blessing of our families,
-          we would be honored to have you join us as we celebrate
-          the beginning of our forever.
-        </p>
-
-        <p className="font-serif italic text-3xl text-[#9B8058] mt-12">
+        <p className="mt-6 font-editorial text-3xl tracking-widest">
           Alviyan & Cherline
         </p>
 
-        <p className="text-[#B19B78] text-[10px] tracking-[0.3em] uppercase mt-4">
-          The Beginning of Forever
+        <div className="mx-auto my-8 h-px w-16 bg-[#C6A878]" />
+
+        <p className="text-[9px] uppercase tracking-[0.4em] text-[#C6A878]">
+          The Beginning of Forever · 2028
         </p>
-      </section>
-            <Countdown />
-            <OurStory />
-            <WeddingDetails />
-           <RSVP
-  invitedGuest={invitedGuest}
-  invitationCode={invitationCode}
-/>
-            <Guestbook guestName={invitedGuest?.guest_name ?? ""} />
-            <MusicPlayer audioRef={audioRef} />
+      </footer>
+
+      <MusicPlayer audioRef={audioRef} />
     </main>
   );
 }

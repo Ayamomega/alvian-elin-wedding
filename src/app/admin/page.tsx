@@ -249,7 +249,7 @@ const handleDeleteGuest = async (guestId: string) => {
   }
 };
 const handleCopyInvitationLink = async (invitationCode: string) => {
-  const invitationLink = `${window.location.origin}/?to=${invitationCode}`;
+  const invitationLink = `${window.location.origin}/preview?to=${invitationCode}`;
 
   try {
     await navigator.clipboard.writeText(invitationLink);
@@ -336,7 +336,7 @@ const handleWhatsAppInvitation = (guest: InvitedGuest) => {
     .replace(/\D/g, "")
     .replace(/^0/, "62");
 
-  const invitationLink = `${window.location.origin}/?to=${guest.invitation_code}`;
+  const invitationLink = `${window.location.origin}/preview?to=${guest.invitation_code}`;
 
   const message = `Halo ${guest.guest_name},
 
@@ -349,7 +349,7 @@ ${invitationLink}
 Merupakan kebahagiaan bagi kami apabila Anda dapat hadir.
 
 Warm regards,
-Alviyan & Elin`;
+Alviyan & Cherline`;
 
   const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 

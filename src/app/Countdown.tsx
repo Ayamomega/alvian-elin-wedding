@@ -18,12 +18,7 @@ export default function Countdown() {
       const difference = targetDate - Date.now();
 
       if (difference <= 0) {
-        setTimeLeft({
-          days: 0,
-          hours: 0,
-          minutes: 0,
-          seconds: 0,
-        });
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
         return;
       }
 
@@ -49,35 +44,57 @@ export default function Countdown() {
   ];
 
   return (
-    <section className="min-h-[70vh] bg-[#F5F0E8] flex flex-col items-center justify-center text-center px-5 py-20">
-      <p className="text-[#9B8058] tracking-[0.4em] text-xs uppercase mb-6">
-        Save The Date
-      </p>
-
-      <h2 className="font-serif text-4xl text-[#756044] mb-4">
-        Counting Down to Forever
-      </h2>
-
-      <p className="text-[#8C785A] text-sm mb-12">
-        21 October 2028
-      </p>
-
-      <div className="grid grid-cols-4 gap-3 max-w-lg w-full">
-        {items.map((item) => (
-          <div key={item.label} className="border border-[#C5AC83] py-6 px-2">
-            <p className="font-serif text-3xl text-[#756044]">
-              {item.value}
-            </p>
-            <p className="text-[9px] tracking-widest uppercase text-[#9B8058] mt-2">
-              {item.label}
-            </p>
-          </div>
-        ))}
+    <section className="relative overflow-hidden bg-[#101D32] px-5 py-24 text-center">
+      <div className="pointer-events-none absolute inset-0 opacity-[0.08]">
+        <div className="absolute -left-24 -top-24 h-72 w-72 rounded-full border border-[#D8BD8A]" />
+        <div className="absolute -left-16 -top-16 h-56 w-56 rounded-full border border-[#D8BD8A]" />
+        <div className="absolute -bottom-24 -right-24 h-72 w-72 rounded-full border border-[#D8BD8A]" />
+        <div className="absolute -bottom-16 -right-16 h-56 w-56 rounded-full border border-[#D8BD8A]" />
       </div>
 
-      <p className="font-serif italic text-xl text-[#9B8058] mt-12">
-        Every second brings us closer to forever.
-      </p>
+      <div className="relative mx-auto max-w-3xl">
+        <p className="mb-5 text-[10px] uppercase tracking-[0.5em] text-[#D8BD8A]">
+          Save The Date
+        </p>
+
+        <div className="mx-auto mb-6 h-px w-12 bg-[#D8BD8A]" />
+
+        <h2 className="font-serif text-3xl leading-relaxed text-[#F5F0E8] sm:text-5xl">
+          Counting Down
+          <br />
+          <span className="italic text-[#D8BD8A]">to Forever</span>
+        </h2>
+
+        <p className="mt-6 text-xs tracking-[0.25em] text-[#D8BD8A]">
+          SATURDAY, 21 OCTOBER 2028
+        </p>
+
+        <div className="mx-auto mt-12 grid max-w-xl grid-cols-4 gap-2 sm:gap-4">
+          {items.map((item) => (
+            <div
+              key={item.label}
+              className="border border-[#B99A68]/50 bg-white/[0.04] px-1 py-6 sm:py-8"
+            >
+              <p className="font-serif text-3xl tabular-nums text-[#F5F0E8] sm:text-5xl">
+                {String(item.value).padStart(2, "0")}
+              </p>
+              <p className="mt-3 text-[8px] uppercase tracking-[0.2em] text-[#D8BD8A] sm:text-[10px]">
+                {item.label}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mx-auto mt-12 h-px w-12 bg-[#D8BD8A]" />
+
+        <p className="mt-8 font-serif text-lg italic text-[#D8BD8A] sm:text-xl">
+          Every second brings us closer to forever.
+        </p>
+
+        <p className="mt-3 text-[9px] uppercase tracking-[0.35em] text-[#F5F0E8]/50">
+          Alviyan & Cherline
+        </p>
+      </div>
     </section>
   );
 }
