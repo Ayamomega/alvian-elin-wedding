@@ -92,7 +92,30 @@ useEffect(() => {
   fetchInvitedGuest();
 }, []);
 
-  
+ // PERSONALIZED GUEST GREETING ANIMATION
+useEffect(() => {
+  if (!invitedGuest?.guest_name) return;
+
+  const greeting = document.querySelector(".opening-guest-greeting");
+  if (!greeting) return;
+
+  gsap.fromTo(
+    greeting,
+    {
+      opacity: 0,
+      y: 20,
+      filter: "blur(6px)",
+    },
+    {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)",
+      duration: 1.2,
+      delay: 0.3,
+      ease: "power3.out",
+    }
+  );
+}, [invitedGuest]); 
 
 // SECTION 1 — LUXURY COVER ENTRANCE ANIMATION
 useEffect(() => {
@@ -588,8 +611,8 @@ useEffect(() => {
             21 . 10 . 2028
           </p>
 
-        {invitedGuest?.guest_name && (
-  <p className="opening-reveal mt-10 font-editorial text-2xl italic tracking-wide text-[#F5F0E8] sm:text-3xl">
+      {invitedGuest?.guest_name && (
+  <p className="opening-reveal opening-guest-greeting mt-10 font-editorial text-2xl italic tracking-wide text-[#F5F0E8] sm:text-3xl">
     Dear {invitedGuest.guest_name.replace(/\b\w/g, (char) => char.toUpperCase())},
   </p>
 )}
